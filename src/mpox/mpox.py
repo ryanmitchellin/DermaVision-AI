@@ -13,7 +13,7 @@ from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 # Set directories
-data_path = '/Users/ryanmitchellin/Desktop/CMPT 340/2024_3_project_08/src/mpox/mpox-skin-lesion-dataset-version-20-msld-v20/versions/4'
+data_path = './src/mpox/mpox-skin-lesion-dataset-version-20-msld-v20/versions/4'
 train_dir = os.path.join(data_path, 'Augmented Images/Augmented Images/FOLDS_AUG/fold5_AUG/Train')
 
 # Define image size
