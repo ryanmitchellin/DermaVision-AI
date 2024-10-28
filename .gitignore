@@ -161,3 +161,6 @@ cython_debug/
 
 # Ignore mpox dataset
 src/mpox/mpox-skin-lesion-dataset-version-20-msld-v20/
+
+# Ignore keras file
+*.keras
