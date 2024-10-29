@@ -14,7 +14,7 @@ fold_names = [f'fold{i}_AUG' for i in range(1, 6)]
 categories = ['Cowpox', 'Healthy', 'HFMD', 'Measles', 'Chickenpox', 'Monkeypox']
 IMG_SIZE = 64
 NUM_CLASSES = len(categories)
-EPOCHS = 2
+EPOCHS = 5
 
 # Label dictionary
 label_dict = {category: idx for idx, category in enumerate(categories)}
