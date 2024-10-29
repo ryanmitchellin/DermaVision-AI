@@ -12,7 +12,7 @@ from sklearn.model_selection import KFold
 data_path = './src/mpox/mpox-skin-lesion-dataset-version-20-msld-v20/versions/4'
 fold_names = [f'fold{i}_AUG' for i in range(1, 6)]
 categories = ['Cowpox', 'Healthy', 'HFMD', 'Measles', 'Chickenpox', 'Monkeypox']
-IMG_SIZE = 150
+IMG_SIZE = 64
 NUM_CLASSES = len(categories)
 EPOCHS = 2
 
