@@ -20,9 +20,9 @@ EPOCHS = 5
 label_dict = {category: idx for idx, category in enumerate(categories)}
 
 # Function to load images from a specified fold
-def load_images_from_fold(fold_name, split_type='Train'):
+def load_images_from_fold(fold_name):
     images, labels = [], []
-    category_folder_base = os.path.join(data_path, 'Augmented Images/Augmented Images/FOLDS_AUG', fold_name, split_type)
+    category_folder_base = os.path.join(data_path, 'Augmented Images/Augmented Images/FOLDS_AUG', fold_name, 'Train')
 
     for category in categories:
         category_folder = os.path.join(category_folder_base, category)
