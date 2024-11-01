@@ -8,7 +8,7 @@ from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropou
 from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping
 from sklearn.model_selection import KFold
 
-# Directories and parameters
+# Declare directories path, categories and parameters
 data_path = './src/mpox/mpox-skin-lesion-dataset-version-20-msld-v20/versions/4'
 fold_names = [f'fold{i}_AUG' for i in range(1, 6)]
 categories = ['Cowpox', 'Healthy', 'HFMD', 'Measles', 'Chickenpox', 'Monkeypox']
@@ -16,14 +16,15 @@ IMG_SIZE = 64
 NUM_CLASSES = len(categories)
 EPOCHS = 5
 
-# Label dictionary
+# Mapping categories name into numeric labels
 label_dict = {category: idx for idx, category in enumerate(categories)}
 
-# Function to load images from a specified fold
+# Load images from a specified fold
 def load_images_from_fold(fold_name):
     images, labels = [], []
     category_folder_base = os.path.join(data_path, 'Augmented Images/Augmented Images/FOLDS_AUG', fold_name, 'Train')
 
+    # Iterate through each categories and load images
     for category in categories:
         category_folder = os.path.join(category_folder_base, category)
         if not os.path.exists(category_folder):
@@ -37,17 +38,19 @@ def load_images_from_fold(fold_name):
             if image is None:
                 print(f"Warning: Image {image_path} could not be read.")
                 continue
+
+            # Preprocess image
             image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
             image = cv2.resize(image, (IMG_SIZE, IMG_SIZE))
             images.append(image)
             labels.append(label_dict[category])
     return np.array(images), np.array(labels)
 
-# Normalize images
+# Normalize images to scale between 0 and 1
 def normalize_images(images):
     return images.astype('float32') / 255.0
 
-# Simple CNN model
+# CNN model for image classification
 def create_cnn_model(input_shape=(IMG_SIZE, IMG_SIZE, 3), num_classes=NUM_CLASSES):
     model = Sequential([
         Input(shape=input_shape),
@@ -63,36 +66,34 @@ def create_cnn_model(input_shape=(IMG_SIZE, IMG_SIZE, 3), num_classes=NUM_CLASSE
     model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
     return model
 
-# K-fold Cross-validation
+# 5-fold cross validation
 kf = KFold(n_splits=5, shuffle=True, random_state=42)
 
-# Iterate over each fold for cross-validation
+# Iterate over each fold for cross-validation 
 for fold_index, fold_name in enumerate(fold_names):
     print(f"\nTraining fold {fold_index + 1} as validation set...")
 
-    # Prepare training and validation data for the current fold
-    val_images, val_labels = load_images_from_fold(fold_name, split_type='Train')
-    val_images = normalize_images(val_images)  # Normalize validation images
+    # Load validation data from the current fold
+    val_images, val_labels = load_images_from_fold(fold_name)
+    val_images = normalize_images(val_images)
+    val_labels = to_categorical(val_labels, num_classes=NUM_CLASSES)
 
     # Load other folds as training data
     train_images, train_labels = [], []
     for other_fold in fold_names:
         if other_fold != fold_name:
-            imgs, lbls = load_images_from_fold(other_fold, split_type='Train')
+            imgs, lbls = load_images_from_fold(other_fold)
             train_images.extend(imgs)
             train_labels.extend(lbls)
 
-    # Convert lists to numpy arrays and preprocess
-    train_images = np.array(train_images)
-    train_labels = np.array(train_labels)
-    train_images = normalize_images(train_images)
-    train_labels = to_categorical(train_labels, num_classes=NUM_CLASSES)
-    val_labels = to_categorical(val_labels, num_classes=NUM_CLASSES)
+    # Convert training data to numpy arrays and preprocess
+    train_images = normalize_images(np.array(train_images))
+    train_labels = to_categorical(np.array(train_labels), num_classes=NUM_CLASSES)
 
-    # Initialize and train the model
+    # Initialize the model
     model = create_cnn_model()
 
-    # Callbacks for saving the best model and early stopping
+    # Set callbacks for early stopping and model checkpoint
     model_checkpoint = ModelCheckpoint(f'my_model_fold{fold_index + 1}.keras', save_best_only=True, monitor='val_accuracy', mode='max')
     early_stopping = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
 
