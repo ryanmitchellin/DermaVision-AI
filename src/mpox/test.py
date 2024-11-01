@@ -4,6 +4,7 @@ import tensorflow as tf
 from tensorflow.keras.models import load_model
 from tensorflow.keras.utils import to_categorical
 import cv2
+from sklearn.metrics import classification_report
 
 # Directories
 data_path = './src/mpox/mpox-skin-lesion-dataset-version-20-msld-v20/versions/4'
@@ -48,7 +49,17 @@ def test_model(model_path, test_images, test_labels):
     # Evaluate the model on the test data
     loss, accuracy = model.evaluate(test_images, test_labels, verbose=0)
     print(f"Test Loss: {loss}, Test Accuracy: {accuracy}")
-    return loss, accuracy
+    return model  # Return the loaded model for further evaluation
+
+# Evaluation function for predictions
+def evaluate_predictions(model, test_images, test_labels):
+    predictions = model.predict(test_images)
+    predicted_classes = np.argmax(predictions, axis=1)
+    true_classes = np.argmax(test_labels, axis=1)
+
+    # Classification Report
+    report = classification_report(true_classes, predicted_classes, target_names=categories)
+    print("Classification Report:\n", report)
 
 # Load test data once for the final model
 test_images, test_labels = load_test_data()
@@ -58,4 +69,5 @@ print(f"Loaded {len(test_images)} test images.")
 final_model_path = 'my_final_model.keras'
 
 # Evaluate only the final model on the test set
-test_model(final_model_path, test_images, test_labels)
+model = test_model(final_model_path, test_images, test_labels)
+evaluate_predictions(model, test_images, test_labels)
