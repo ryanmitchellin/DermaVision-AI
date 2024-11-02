@@ -1,0 +1,11 @@
+Actual Labels:
+pic1.jpg - Monkeypox
+pic2.jpg - Measles
+pic3.jpg - Measles
+pic4.jpg - Healthy
+pic5.jpg - Cowpox
+pic6.jpg - Monkeypox
+pic7.jpg - Chickenpox
+pic8.jpg - HFMD
+pic9.jpg - HFMD
+pic10.jpg - Cowpox
