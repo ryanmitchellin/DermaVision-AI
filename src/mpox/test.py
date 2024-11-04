@@ -79,11 +79,22 @@ def evaluate_predictions(model, test_images, test_labels):
 test_images, test_labels = load_test_data()
 print(f"Loaded {len(test_images)} test images.")
 
+# CNN
 # Path to the final model
-final_model_path = 'my_final_model.keras'
+final_cnn_model_path = 'my_final_cnn_model.keras'
 
 # Test data evaluation based on the trained model
-model = test_model(final_model_path, test_images, test_labels)
+cnn_model = test_model(final_cnn_model_path, test_images, test_labels)
 
 # Generate test data evaluation report
-evaluate_predictions(model, test_images, test_labels)
+evaluate_predictions(cnn_model, test_images, test_labels)
+
+# ResNet
+# Path to the final model
+final_resnet_model_path = 'my_final_resnet_model.keras'
+
+# Test data evaluation based on the trained model
+resnet_model = test_model(final_resnet_model_path, test_images, test_labels)
+
+# Generate test data evaluation report
+evaluate_predictions(resnet_model, test_images, test_labels)
