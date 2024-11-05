@@ -153,7 +153,7 @@ if __name__ == "__main__":
     
     try:
         sourcepath="./src/severity/kaggleClassified"
-        outputpath="./src/severity/augmented_data"
+        outputpath="./src/severity/augmented_autoencoder"
         augment_files(sourcepath, outputpath)
         total_time = time.time() - start_time
         minutes, seconds = divmod(total_time, 60)
