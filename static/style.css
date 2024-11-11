@@ -1,126 +1,184 @@
 /* Reset and base styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(to right, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+	font-family: "Arial", sans-serif;
+	background: linear-gradient(to right, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
+}
+
+/* Navbar */
+.top-navbar {
+	background-color: #007bff;
+	padding: 1rem;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 100;
+}
+
+.top-navbar ul {
+	list-style: none;
+	display: flex;
+	justify-content: center;
+	gap: 2rem;
+	margin: 0;
+	padding: 0;
+}
+
+.top-navbar li {
+	display: inline;
+}
+
+.top-navbar a {
+	color: white;
+	text-decoration: none;
+	font-size: 1.2rem;
+	transition: color 0.3s;
+}
+
+.top-navbar a:hover {
+	color: #e3eeff;
+}
+
+body {
+	padding-top: 80px;
 }
 
 /* Container styling */
 .container {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 450px;
+	background-color: white;
+	padding: 2rem;
+	border-radius: 15px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+	width: 100%;
+	max-width: 600px;
+	margin-top: 1.5rem;
 }
 
 /* Title styling */
 h1 {
-    color: #333;
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    text-align: center;
+	color: #333;
+	font-size: 2rem;
+	margin-bottom: 1.5rem;
+	text-align: center;
 }
 
 /* Custom file input styling */
 .file-input-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
 }
 
 #fileInput {
-    display: none; /* Hide the default file input */
+	display: none; /* Hide the default file input */
 }
 
 .file-label {
-    display: inline-block;
-    background-color: #fcb001;
-    color: white;
-    padding: 0.8rem 1.2rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
+	display: inline-block;
+	background-color: #fcb001;
+	color: white;
+	padding: 0.8rem 1.2rem;
+	border-radius: 8px;
+	cursor: pointer;
+	font-size: 1rem;
+	transition: background-color 0.3s ease;
 }
 
 .file-label:hover {
-    background-color: #fc8701;
+	background-color: #fc8701;
 }
 
 .file-name {
-    font-size: 1rem;
-    color: #555;
+	font-size: 1rem;
+	color: #555;
+}
+
+/* File preview styling */
+.file-preview {
+	display: block;
+	margin-top: 1rem;
+	width: 100%;
+	max-width: 500px;
+	height: auto;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Button styling */
 button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 0.8rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-    width: 100%;
-    margin-top: 1rem;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	padding: 1rem;
+	border-radius: 8px;
+	cursor: pointer;
+	font-size: 1.2rem;
+	transition: background-color 0.3s ease;
+	width: 100%;
+	margin-top: 1rem;
 }
 
 button:hover {
-    background-color: #0056b3;
+	background-color: #0056b3;
+}
+
+button.disabled-btn {
+	background-color: grey;
+	color: white;
+	cursor: not-allowed;
 }
 
 /* Result text styling */
 #result {
-    margin-top: 1.5rem;
-    font-size: 1.1rem;
-    color: #333;
-    text-align: center;
-    padding: 1rem;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    border: 1px solid #dee2e6;
+	margin-top: 1.5rem;
+	font-size: 1.2rem;
+	color: #333;
+	text-align: center;
+	padding: 1rem;
+	background-color: #f8f9fa;
+	border-radius: 8px;
+	border: 1px solid #dee2e6;
 }
 
 /* Additional spacing for severity and explanation */
-#severity, #explanation {
-    margin-top: 1rem;
-    font-size: 1rem;
-    color: #555;
-    padding: 0.8rem;
-    background-color: #f1f3f5;
-    border-radius: 8px;
-    border: 1px solid #dee2e6;
+#severity,
+#explanation {
+	margin-top: 1rem;
+	font-size: 1.1rem;
+	color: #555;
+	padding: 0.8rem;
+	background-color: #f1f3f5;
+	border-radius: 8px;
+	border: 1px solid #dee2e6;
 }
 
 /* Hide elements by default */
 .hidden {
-    display: none;
+	display: none;
 }
 
 /* Responsive design */
 @media (max-width: 480px) {
-    .container {
-        padding: 1.5rem;
-    }
+	.container {
+		padding: 1.5rem;
+	}
 
-    h1 {
-        font-size: 1.5rem;
-    }
+	h1 {
+		font-size: 1.5rem;
+	}
 
-    button {
-        padding: 0.7rem;
-    }
+	button {
+		padding: 0.7rem;
+	}
 }

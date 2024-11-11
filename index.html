@@ -1,65 +1,47 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skin Disease Diagnosis</title>
-    <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Skin Disease Diagnosis</h1>
-        <form id="uploadForm">
-            <div class="file-input-wrapper">
-                <input type="file" id="fileInput" accept="image/*" onchange="displayFileName()">
-                <label for="fileInput" class="file-label">Choose File</label>
-                <span id="fileName" class="file-name">No file chosen</span>
-            </div>
-            <button type="button" onclick="uploadImage()">Diagnose</button>
-        </form>
-        <p id="result" class="hidden"></p>
-        <p id="severity" class="hidden"></p>
-        <p id="explanation" class="hidden"></p>
-    </div>
-
-    <script>
-        // Display the chosen file name
-        function displayFileName() {
-            const fileInput = document.getElementById('fileInput');
-            const fileName = document.getElementById('fileName');
-            fileName.textContent = fileInput.files[0] ? fileInput.files[0].name : 'No file chosen';
-        }
-
-        async function uploadImage() {
-            const fileInput = document.getElementById('fileInput');
-            const file = fileInput.files[0];
-            if (!file) {
-                alert("Please upload an image.");
-                return;
-            }
-
-            const formData = new FormData();
-            formData.append("file", file);
-
-            const response = await fetch('/predict', {
-                method: 'POST',
-                body: formData
-            });
-
-            const result = await response.json();
-            document.getElementById('result').textContent = "Diagnosis: " + result.prediction;
-            document.getElementById('result').classList.remove('hidden');
-
-            if (result.prediction === 'Monkeypox') {
-                document.getElementById('severity').textContent = "Severity: " + result.severity;
-                document.getElementById('explanation').textContent = "Explanation: " + result.explanation;
-                document.getElementById('severity').classList.remove('hidden');
-                document.getElementById('explanation').classList.remove('hidden');
-            } else {
-                document.getElementById('severity').classList.add('hidden');
-                document.getElementById('explanation').classList.add('hidden');
-            }
-        }
-    </script>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Skin Disease Diagnosis</title>
+		<link rel="stylesheet" href="static/style.css" />
+	</head>
+	<body>
+		<nav class="top-navbar">
+			<ul>
+				<li><a href="#diagnosis">Diagnosis</a></li>
+				<li><a href="#about">About</a></li>
+			</ul>
+		</nav>
+		<div class="container">
+			<h1>Skin Disease Diagnosis</h1>
+			<form id="uploadForm">
+				<div class="file-input-wrapper">
+					<input
+						type="file"
+						id="fileInput"
+						accept="image/*"
+						onchange="displayFileName()"
+					/>
+					<label for="fileInput" class="file-label">Choose File</label>
+					<span id="fileName" class="file-name">No file chosen</span>
+				</div>
+				<img id="filePreview" class="hidden file-preview" />
+				<button
+					type="button"
+					id="diagnoseButton"
+					class="disabled-btn"
+					onclick="uploadImage()"
+				>
+					Diagnose
+				</button>
+			</form>
+			<p id="loadingSpinner" class="hidden">Please wait, analyzing image...</p>
+			<p id="result" class="hidden"></p>
+			<p id="severity" class="hidden"></p>
+			<p id="explanation" class="hidden"></p>
+		</div>
+		<script src="static/script.js"></script>
+	</body>
 </html>
