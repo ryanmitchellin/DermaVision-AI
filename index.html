@@ -10,20 +10,19 @@
 	<body>
 		<nav class="top-navbar">
 			<ul>
-				<li><a href="#diagnosis">Diagnosis</a></li>
-				<li><a href="#about">About</a></li>
+				<li>
+					<a href="#diagnosis" onclick="showSection('diagnosis')">Diagnosis</a>
+				</li>
+				<li>
+					<a href="#about" onclick="showSection('about')">About</a>
+				</li>
 			</ul>
 		</nav>
-		<div class="container">
+		<div id="diagnosis" class="container">
 			<h1>Skin Disease Diagnosis</h1>
 			<form id="uploadForm">
 				<div class="file-input-wrapper">
-					<input
-						type="file"
-						id="fileInput"
-						accept="image/*"
-						onchange="displayFileName()"
-					/>
+					<input type="file" id="fileInput" accept="image/*" />
 					<label for="fileInput" class="file-label">Choose File</label>
 					<span id="fileName" class="file-name">No file chosen</span>
 				</div>
@@ -31,8 +30,9 @@
 				<button
 					type="button"
 					id="diagnoseButton"
-					class="disabled-btn"
 					onclick="uploadImage()"
+					disabled
+					class="disabled-btn"
 				>
 					Diagnose
 				</button>
@@ -41,6 +41,22 @@
 			<p id="result" class="hidden"></p>
 			<p id="severity" class="hidden"></p>
 			<p id="explanation" class="hidden"></p>
+		</div>
+
+		<div id="about" class="container hidden">
+			<h1>About</h1>
+			<p>
+				This application is designed to assist in diagnosing skin diseases by
+				using image recognition technology. Upload an image, and our system will
+				provide a preliminary diagnosis and relevant information about the
+				condition. This tool aims to raise awareness and assist healthcare
+				professionals by providing a quick reference.
+			</p>
+			<p>
+				Please note: This application is not a substitute for professional
+				medical advice. Always consult a qualified healthcare provider for
+				diagnosis and treatment.
+			</p>
 		</div>
 		<script src="static/script.js"></script>
 	</body>

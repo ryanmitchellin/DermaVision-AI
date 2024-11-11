@@ -28,6 +28,13 @@ function handleFileChange() {
 	}
 }
 
+function showSection(sectionId) {
+	document.getElementById("diagnosis").classList.add("hidden");
+	document.getElementById("about").classList.add("hidden");
+
+	document.getElementById(sectionId).classList.remove("hidden");
+}
+
 async function uploadImage() {
 	const fileInput = document.getElementById("fileInput");
 	const file = fileInput.files[0];
