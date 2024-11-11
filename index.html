@@ -9,14 +9,19 @@
 	</head>
 	<body>
 		<nav class="top-navbar">
-			<ul>
-				<li>
-					<a href="#diagnosis" onclick="showSection('diagnosis')">Diagnosis</a>
-				</li>
-				<li>
-					<a href="#about" onclick="showSection('about')">About</a>
-				</li>
-			</ul>
+			<div class="navbar-content">
+				<div class="navbar-title">
+					<a href="#">Skin Diagnosis App</a>
+				</div>
+				<ul>
+					<li>
+						<a href="index.html">Diagnosis</a>
+					</li>
+					<li>
+						<a href="about.html">About</a>
+					</li>
+				</ul>
+			</div>
 		</nav>
 		<div id="diagnosis" class="container">
 			<h1>Skin Disease Diagnosis</h1>
@@ -49,21 +54,6 @@
 			<p id="explanation" class="hidden"></p>
 		</div>
 
-		<div id="about" class="container hidden">
-			<h1>About</h1>
-			<p>
-				This application is designed to assist in diagnosing skin diseases by
-				using image recognition technology. Upload an image, and our system will
-				provide a preliminary diagnosis and relevant information about the
-				condition. This tool aims to raise awareness and assist healthcare
-				professionals by providing a quick reference.
-			</p>
-			<p>
-				Please note: This application is not a substitute for professional
-				medical advice. Always consult a qualified healthcare provider for
-				diagnosis and treatment.
-			</p>
-		</div>
 		<script src="static/script.js"></script>
 	</body>
 </html>
