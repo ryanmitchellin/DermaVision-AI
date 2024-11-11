@@ -30,7 +30,7 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	max-width: 1200px; /* To control the width */
+	max-width: 1200px;
 	margin: 0 auto;
 }
 
@@ -96,7 +96,7 @@ h1 {
 }
 
 #fileInput {
-	display: none; /* Hide the default file input */
+	display: none;
 }
 
 .file-label {
@@ -178,7 +178,6 @@ h1 {
 	background-color: #0056b3;
 }
 
-/* Show icon buttons on hover */
 .image-container:hover .icon-buttons {
 	display: flex;
 }
