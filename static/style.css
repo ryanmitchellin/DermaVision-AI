@@ -104,15 +104,68 @@ h1 {
 	color: #555;
 }
 
+/* Image container styling */
+.image-container {
+	position: relative;
+	display: inline-block;
+	max-width: 500px;
+	margin-top: 1rem;
+}
+
 /* File preview styling */
 .file-preview {
 	display: block;
-	margin-top: 1rem;
 	width: 100%;
-	max-width: 500px;
 	height: auto;
 	border-radius: 10px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease;
+}
+
+.image-container:hover .file-preview {
+	opacity: 0.4;
+}
+
+/* Icon buttons container */
+.icon-buttons {
+	position: absolute;
+	top: 0px;
+	right: 5px;
+	display: flex;
+	gap: 5px;
+}
+
+/* Discard button styling */
+.discard-button,
+.zoom-button {
+	background-color: red;
+	color: white;
+	border: none;
+	padding: 0.2rem;
+	height: 35px;
+	width: 35px;
+	border-radius: 10%;
+	cursor: pointer;
+	font-size: 0.9rem;
+	font-weight: bold;
+	transition: background-color 0.3s;
+}
+
+.zoom-button {
+	background-color: #007bff;
+}
+
+.discard-button:hover {
+	background-color: darkred;
+}
+
+.zoom-button:hover {
+	background-color: #0056b3;
+}
+
+/* Show icon buttons on hover */
+.image-container:hover .icon-buttons {
+	display: flex;
 }
 
 /* Button styling */

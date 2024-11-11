@@ -9,6 +9,8 @@ function handleFileChange() {
 	const fileName = document.getElementById("fileName");
 	const filePreview = document.getElementById("filePreview");
 	const diagnoseButton = document.getElementById("diagnoseButton");
+	const discardButton = document.querySelector(".discard-button");
+	const zoomButton = document.querySelector(".zoom-button");
 
 	if (fileInput.files.length > 0) {
 		fileName.textContent = fileInput.files[0].name;
@@ -16,6 +18,8 @@ function handleFileChange() {
 		reader.onload = function (e) {
 			filePreview.src = e.target.result;
 			filePreview.classList.remove("hidden");
+			discardButton.classList.remove("hidden");
+			zoomButton.classList.remove("hidden");
 		};
 		reader.readAsDataURL(fileInput.files[0]);
 		diagnoseButton.disabled = false;
@@ -33,6 +37,23 @@ function showSection(sectionId) {
 	document.getElementById("about").classList.add("hidden");
 
 	document.getElementById(sectionId).classList.remove("hidden");
+}
+
+function discardImage() {
+	const fileInput = document.getElementById("fileInput");
+	const filePreview = document.getElementById("filePreview");
+	const diagnoseButton = document.getElementById("diagnoseButton");
+	const fileName = document.getElementById("fileName");
+	const discardButton = document.querySelector(".discard-button");
+	const zoomButton = document.querySelector(".zoom-button");
+
+	fileInput.value = "";
+	filePreview.classList.add("hidden");
+	discardButton.classList.add("hidden");
+	zoomButton.classList.add("hidden");
+	diagnoseButton.disabled = true;
+	diagnoseButton.classList.add("disabled-btn");
+	fileName.textContent = "No file chosen";
 }
 
 async function uploadImage() {
