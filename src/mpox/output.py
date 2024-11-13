@@ -75,7 +75,7 @@ if __name__ == "__main__":
     actual_labels = load_actual_labels(answer_path)
     
     # CNN
-    final_model_path = 'my_final_cnn_model.keras'
+    final_model_path = 'final_cnn_model.keras'
     
     # Predict classes for the loaded images
     predicted_labels = predict_categories(final_model_path, images)

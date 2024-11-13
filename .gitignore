@@ -164,3 +164,6 @@ src/mpox/mpox-skin-lesion-dataset-version-20-msld-v20/
 
 # Ignore keras file
 *.keras
+
+# Ignore my_dir folder
+my_dir/

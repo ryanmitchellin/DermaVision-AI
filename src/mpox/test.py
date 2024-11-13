@@ -81,7 +81,7 @@ print(f"Loaded {len(test_images)} test images.")
 
 # CNN
 # Path to the final model
-final_cnn_model_path = 'my_final_cnn_model.keras'
+final_cnn_model_path = 'final_cnn_model.keras'
 
 # Test data evaluation based on the trained model
 cnn_model = test_model(final_cnn_model_path, test_images, test_labels)
