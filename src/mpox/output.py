@@ -101,29 +101,3 @@ if __name__ == "__main__":
     print(f"\nTotal Correct Predictions: {correct_count}")
     print(f"Total Incorrect Predictions: {incorrect_count}")
 
-    # ResNet
-    # final_model_path = 'my_final_resnet_model.keras'
-    
-    # # Predict classes for the loaded images
-    # predicted_labels = predict_categories(final_model_path, images)
-
-    # # Count variables
-    # correct_count = 0
-    # incorrect_count = 0
-
-    # # Output the predicted classes alongside the image filenames
-    # for image_name, predicted_label in zip(image_names, predicted_labels):
-    #     actual_label = actual_labels.get(image_name, "Unknown")
-    #     predicted_label = categories[predicted_label]
-
-    #     # Compare actual and predicted labels
-    #     if actual_label == predicted_label:
-    #         correct_count += 1
-    #     else:
-    #         incorrect_count += 1
-
-    #     print(f"Image: {image_name}, Actual Class: {actual_label}, Predicted Class: {predicted_label}")
-
-    # # Output the counts of correct and incorrect predictions
-    # print(f"\nTotal Correct Predictions: {correct_count}")
-    # print(f"Total Incorrect Predictions: {incorrect_count}")

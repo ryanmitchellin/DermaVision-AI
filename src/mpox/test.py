@@ -89,12 +89,3 @@ cnn_model = test_model(final_cnn_model_path, test_images, test_labels)
 # Generate test data evaluation report
 evaluate_predictions(cnn_model, test_images, test_labels)
 
-# ResNet
-# Path to the final model
-# final_resnet_model_path = 'my_final_resnet_model.keras'
-
-# # Test data evaluation based on the trained model
-# resnet_model = test_model(final_resnet_model_path, test_images, test_labels)
-
-# # Generate test data evaluation report
-# evaluate_predictions(resnet_model, test_images, test_labels)

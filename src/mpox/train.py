@@ -5,9 +5,8 @@ import tensorflow as tf
 from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
-from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping
+from tensorflow.keras.callbacks import EarlyStopping
 from sklearn.model_selection import KFold
-# from tensorflow.keras.applications import ResNet50
 import keras_tuner as kt
 
 # Declare directories path, categories and parameters
@@ -68,24 +67,6 @@ def create_cnn_model(hp):
                   loss='categorical_crossentropy', metrics=['accuracy'])
     return model
 
-# ResNet model for image classification
-# def create_resnet_model(input_shape=(IMG_SIZE, IMG_SIZE, 3), num_classes=NUM_CLASSES):
-#     base_model = ResNet50(weights='imagenet', include_top=False, input_shape=input_shape)
-#     base_model.trainable = False
-
-#     model = Sequential([
-#         Input(shape=input_shape),
-#         base_model,
-#         Conv2D(32, 3, padding='same', activation='relu'),
-#         Flatten(),
-#         Dense(128, activation='relu'),
-#         Dropout(0.5),
-#         Dense(num_classes, activation='softmax')
-#     ])
-
-#     model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
-#     return model
-
 # Hyperparameter search using Random Search
 tuner = kt.RandomSearch(
     create_cnn_model,
@@ -123,17 +104,6 @@ for fold_index, fold_name in enumerate(fold_names):
     train_images = normalize_images(np.array(train_images))
     train_labels = to_categorical(np.array(train_labels), num_classes=NUM_CLASSES)
 
-    # # Initialize the model
-    # cnn_model = create_cnn_model()
-
-    # # Set callbacks for early stopping and model checkpoint
-    # model_checkpoint = ModelCheckpoint(f'my_cnn_model_fold{fold_index + 1}.keras', save_best_only=True, monitor='val_accuracy', mode='max')
-    # early_stopping = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
-
-    # # Train the model
-    # cnn_model.fit(train_images, train_labels, epochs=EPOCHS, validation_data=(val_images, val_labels),
-    #           callbacks=[model_checkpoint, early_stopping])
-
     # Perform hyperparameter search using random search
     early_stopping = EarlyStopping(monitor='val_loss', patience=3, restore_best_weights=True)
     
@@ -164,42 +134,3 @@ print("\nBest Hyperparameters found:")
 for hp_name, hp_value in best_hp.values.items():
     print(f"{hp_name}: {hp_value}")
 
-# Iterate over each fold for cross-validation ResNet
-# for fold_index, fold_name in enumerate(fold_names):
-#     print(f"\nTraining ResNet fold {fold_index + 1} as validation set...")
-
-#     # Load validation data from the current fold
-#     val_images, val_labels = load_images_from_fold(fold_name)
-#     val_images = normalize_images(val_images)
-#     val_labels = to_categorical(val_labels, num_classes=NUM_CLASSES)
-
-#     # Load other folds as training data
-#     train_images, train_labels = [], []
-#     for other_fold in fold_names:
-#         if other_fold != fold_name:
-#             imgs, lbls = load_images_from_fold(other_fold)
-#             train_images.extend(imgs)
-#             train_labels.extend(lbls)
-
-#     # Convert training data to numpy arrays and preprocess
-#     train_images = normalize_images(np.array(train_images))
-#     train_labels = to_categorical(np.array(train_labels), num_classes=NUM_CLASSES)
-
-#     # Initialize the model
-#     resnet_model = create_resnet_model()
-
-#     # Set callbacks for early stopping and model checkpoint
-#     model_checkpoint = ModelCheckpoint(f'my_resnet_model_fold{fold_index + 1}.keras', save_best_only=True, monitor='val_accuracy', mode='max')
-#     early_stopping = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
-
-#     # Train the model
-#     resnet_model.fit(train_images, train_labels, epochs=EPOCHS, validation_data=(val_images, val_labels),
-#               callbacks=[model_checkpoint, early_stopping])
-
-#     # Evaluate the model on the validation set for the current fold
-#     val_loss, val_accuracy = resnet_model.evaluate(val_images, val_labels)
-#     print(f"Fold {fold_index + 1} Validation Loss: {val_loss}, Validation Accuracy: {val_accuracy}")
-
-# Final model ResNet
-# resnet_model.save('my_final_resnet_model.keras')
-# print("Final model saved as my_final_resnet_model.keras")
