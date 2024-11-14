@@ -78,7 +78,6 @@ function outsideClickClose(event) {
 function closeModal() {
 	const zoomModal = document.getElementById("zoomModal");
 	zoomModal.classList.add("hidden");
-
 	document.removeEventListener("click", outsideClickClose);
 }
 

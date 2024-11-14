@@ -231,7 +231,6 @@ button.disabled-btn {
 }
 
 /* About Page Styling */
-/* ABOUT PAGE */
 .about-container {
 	background-color: #f9f9f9; /* Light gray background for the About section */
 	padding: 2rem;
@@ -246,7 +245,7 @@ button.disabled-btn {
 }
 
 .about-container h1 {
-	color: #007bff; /* Match the navbar color */
+	color: #007bff;
 	font-size: 2rem;
 	text-align: center;
 	margin-bottom: 1rem;
@@ -255,7 +254,7 @@ button.disabled-btn {
 }
 
 .about-container.card h1 {
-	color: black; /* Match the navbar color */
+	color: #007bff;
 }
 
 .about-container p {
@@ -312,6 +311,40 @@ button.disabled-btn {
 
 .hidden {
 	display: none;
+}
+
+/* Bottom info styling */
+.bottom-info {
+	width: 100%;
+	text-align: left;
+	padding: 1rem;
+	color: #007bff;
+	margin-top: 2rem;
+}
+
+.bottom-info h2 {
+	font-size: 1.8rem;
+	font-weight: bold;
+	color: #007bff;
+	margin-bottom: 1rem;
+}
+
+.bottom-info ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.bottom-info ul li {
+	margin: 1rem 0;
+	font-size: 1.2rem;
+	color: #333;
+}
+
+.bottom-info p {
+	color: #007bff;
+	text-decoration: none;
+	font-weight: 500;
 }
 
 /* Responsive design */
