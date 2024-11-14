@@ -56,6 +56,32 @@ function discardImage() {
 	fileName.textContent = "No file chosen";
 }
 
+function zoomImage() {
+	const filePreview = document.getElementById("filePreview");
+	const zoomedImage = document.getElementById("zoomedImage");
+	const zoomModal = document.getElementById("zoomModal");
+
+	zoomedImage.src = filePreview.src;
+	zoomModal.classList.remove("hidden");
+
+	document.addEventListener("click", outsideClickClose);
+}
+
+function outsideClickClose(event) {
+	const zoomModal = document.getElementById("zoomModal");
+	const zoomedImage = document.getElementById("zoomedImage");
+	if (event.target === zoomModal && event.target !== zoomedImage) {
+		closeModal();
+	}
+}
+
+function closeModal() {
+	const zoomModal = document.getElementById("zoomModal");
+	zoomModal.classList.add("hidden");
+
+	document.removeEventListener("click", outsideClickClose);
+}
+
 async function uploadImage() {
 	const fileInput = document.getElementById("fileInput");
 	const file = fileInput.files[0];

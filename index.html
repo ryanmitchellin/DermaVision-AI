@@ -34,8 +34,16 @@
 				<div class="image-container">
 					<img id="filePreview" class="hidden file-preview" />
 					<div class="icon-buttons hidden">
-						<button onclick="discardImage()" class="discard-button">x</button>
-						<button onclick="zoomImage()" class="zoom-button">🔍</button>
+						<button
+							type="button"
+							onclick="discardImage()"
+							class="discard-button"
+						>
+							x
+						</button>
+						<button type="button" onclick="zoomImage()" class="zoom-button">
+							🔍
+						</button>
 					</div>
 				</div>
 				<button
@@ -52,6 +60,10 @@
 			<p id="result" class="hidden"></p>
 			<p id="severity" class="hidden"></p>
 			<p id="explanation" class="hidden"></p>
+		</div>
+
+		<div id="zoomModal" class="modal hidden">
+			<img class="modal-content" id="zoomedImage" />
 		</div>
 
 		<script src="static/script.js"></script>

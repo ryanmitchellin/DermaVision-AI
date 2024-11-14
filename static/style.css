@@ -230,11 +230,6 @@ button.disabled-btn {
 	border: 1px solid #dee2e6;
 }
 
-/* Hide elements by default */
-.hidden {
-	display: none;
-}
-
 /* About Page Styling */
 /* ABOUT PAGE */
 .about-container {
@@ -292,6 +287,31 @@ button.disabled-btn {
 	margin-bottom: 0.5rem;
 	color: #333;
 	font-size: 1rem;
+}
+
+/* Modal styling */
+.modal {
+	display: flex;
+	position: fixed;
+	z-index: 101;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.8);
+	justify-content: center;
+	align-items: center;
+}
+
+.modal-content {
+	max-width: 75%;
+	max-height: 75%;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hidden {
+	display: none;
 }
 
 /* Responsive design */
