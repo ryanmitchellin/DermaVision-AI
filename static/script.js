@@ -1,9 +1,11 @@
 // script.js
 
+// Add event listener to file input
 document
 	.getElementById("fileInput")
 	.addEventListener("change", handleFileChange);
 
+// Handle file input change
 function handleFileChange() {
 	const fileInput = document.getElementById("fileInput");
 	const fileName = document.getElementById("fileName");
@@ -32,6 +34,7 @@ function handleFileChange() {
 	}
 }
 
+// Toggle sections (for future expansions like About page)
 function showSection(sectionId) {
 	document.getElementById("diagnosis").classList.add("hidden");
 	document.getElementById("about").classList.add("hidden");
@@ -39,6 +42,7 @@ function showSection(sectionId) {
 	document.getElementById(sectionId).classList.remove("hidden");
 }
 
+// Discard image and reset the form
 function discardImage() {
 	const fileInput = document.getElementById("fileInput");
 	const filePreview = document.getElementById("filePreview");
@@ -56,6 +60,7 @@ function discardImage() {
 	fileName.textContent = "No file chosen";
 }
 
+// Zoom image modal functionality
 function zoomImage() {
 	const filePreview = document.getElementById("filePreview");
 	const zoomedImage = document.getElementById("zoomedImage");
@@ -67,6 +72,7 @@ function zoomImage() {
 	document.addEventListener("click", outsideClickClose);
 }
 
+// Close modal when clicking outside
 function outsideClickClose(event) {
 	const zoomModal = document.getElementById("zoomModal");
 	const zoomedImage = document.getElementById("zoomedImage");
@@ -75,12 +81,14 @@ function outsideClickClose(event) {
 	}
 }
 
+// Close modal
 function closeModal() {
 	const zoomModal = document.getElementById("zoomModal");
 	zoomModal.classList.add("hidden");
 	document.removeEventListener("click", outsideClickClose);
 }
 
+// Upload image and show spinner effect during processing
 async function uploadImage() {
 	const fileInput = document.getElementById("fileInput");
 	const file = fileInput.files[0];
@@ -92,35 +100,53 @@ async function uploadImage() {
 	const formData = new FormData();
 	formData.append("file", file);
 
-	// Show loading spinner
-	document.getElementById("loadingSpinner").classList.remove("hidden");
+	// Show loading spinner and hide other elements
+	const loadingSpinner = document.getElementById("loadingSpinner");
+	loadingSpinner.classList.remove("hidden");
 	document.getElementById("result").classList.add("hidden");
 	document.getElementById("severity").classList.add("hidden");
 	document.getElementById("explanation").classList.add("hidden");
 
+	// Record the start time for the spinner
+	const spinnerStartTime = Date.now();
+
 	try {
+		// Send the image to the server
 		const response = await fetch("/predict", {
 			method: "POST",
 			body: formData,
 		});
 
 		const result = await response.json();
-		document.getElementById("result").textContent =
-			"Diagnosis: " + result.prediction;
-		document.getElementById("result").classList.remove("hidden");
 
-		if (result.prediction === "Monkeypox") {
-			document.getElementById("severity").textContent =
-				"Severity: " + result.severity;
-			document.getElementById("explanation").textContent =
-				"Explanation: " + result.explanation;
-			document.getElementById("severity").classList.remove("hidden");
-			document.getElementById("explanation").classList.remove("hidden");
-		}
+		// Wait for at least 1 second before showing the results
+		const elapsedTime = Date.now() - spinnerStartTime;
+		const minimumSpinnerTime = 1000; // 1 second
+		const remainingTime = minimumSpinnerTime - elapsedTime;
+
+		setTimeout(() => {
+			// Display the diagnosis result
+			document.getElementById("result").textContent =
+				"Diagnosis: " + result.prediction;
+			document.getElementById("result").classList.remove("hidden");
+
+			if (result.prediction === "Monkeypox") {
+				document.getElementById("severity").textContent =
+					"Severity: " + result.severity;
+				document.getElementById("explanation").textContent =
+					"Explanation: " + result.explanation;
+				document.getElementById("severity").classList.remove("hidden");
+				document.getElementById("explanation").classList.remove("hidden");
+			}
+
+			// Hide the spinner after displaying results
+			loadingSpinner.classList.add("hidden");
+		}, remainingTime > 0 ? remainingTime : 0);
 	} catch (error) {
+		// Handle errors gracefully
 		alert("An error occurred while processing the image. Please try again.");
-	} finally {
-		// Hide loading spinner
-		document.getElementById("loadingSpinner").classList.add("hidden");
+		loadingSpinner.classList.add("hidden"); // Hide spinner if error occurs
 	}
 }
+
+
