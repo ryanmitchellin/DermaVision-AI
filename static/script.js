@@ -124,29 +124,39 @@ async function uploadImage() {
 		const minimumSpinnerTime = 1000; // 1 second
 		const remainingTime = minimumSpinnerTime - elapsedTime;
 
-		setTimeout(() => {
-			// Display the diagnosis result
-			document.getElementById("result").textContent =
-				"Diagnosis: " + result.prediction;
-			document.getElementById("result").classList.remove("hidden");
+		setTimeout(
+			() => {
+				// Display the diagnosis result
+				document.getElementById("result").textContent =
+					"Diagnosis: " + result.prediction;
+				document.getElementById("result").classList.remove("hidden");
 
-			if (result.prediction === "Monkeypox") {
-				document.getElementById("severity").textContent =
-					"Severity: " + result.severity;
-				document.getElementById("explanation").textContent =
-					"Explanation: " + result.explanation;
-				document.getElementById("severity").classList.remove("hidden");
-				document.getElementById("explanation").classList.remove("hidden");
-			}
+				if (result.prediction === "Monkeypox") {
+					document.getElementById("severity").textContent =
+						"Severity: " + result.severity;
+					document.getElementById("explanation").textContent =
+						"Explanation: " + result.explanation;
+					document.getElementById("severity").classList.remove("hidden");
+					document.getElementById("explanation").classList.remove("hidden");
+				}
 
-			// Hide the spinner after displaying results
-			loadingSpinner.classList.add("hidden");
-		}, remainingTime > 0 ? remainingTime : 0);
+				// Add a link to the about page for the specific diagnosis
+				const diagnosisLink = document.createElement("a");
+				diagnosisLink.href = `/about#${result.prediction
+					.toLowerCase()
+					.replace(" ", "-")}-card-details`;
+				diagnosisLink.textContent = `Learn more about ${result.prediction}`;
+				diagnosisLink.classList.add("learn-more-link");
+				document.getElementById("result").appendChild(diagnosisLink);
+
+				// Hide the spinner after displaying results
+				loadingSpinner.classList.add("hidden");
+			},
+			remainingTime > 0 ? remainingTime : 0
+		);
 	} catch (error) {
 		// Handle errors gracefully
 		alert("An error occurred while processing the image. Please try again.");
 		loadingSpinner.classList.add("hidden"); // Hide spinner if error occurs
 	}
 }
-
-

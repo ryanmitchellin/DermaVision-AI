@@ -1,96 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Skin Disease Diagnosis</title>
-	<link rel="stylesheet" href="static/style.css" />
-</head>
-<body>
-	<nav class="top-navbar">
-		<div class="navbar-content">
-			<div class="navbar-title">
-				<a href="#">Skin Diagnosis App</a>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Skin Disease Diagnosis</title>
+		<link rel="stylesheet" href="static/style.css" />
+	</head>
+	<body>
+		<nav class="top-navbar">
+			<div class="navbar-content">
+				<div class="navbar-title">
+					<a href="/">Skin Diagnosis App</a>
+				</div>
+				<ul>
+					<li>
+						<a href="/">Diagnosis</a>
+					</li>
+					<li>
+						<a href="/about">About</a>
+					</li>
+				</ul>
 			</div>
-			<ul>
+		</nav>
+		<div id="diagnosis" class="container">
+			<h1>Skin Disease Diagnosis</h1>
+			<form id="uploadForm">
+				<div class="file-input-wrapper">
+					<input type="file" id="fileInput" accept="image/*" />
+					<label for="fileInput" class="file-label">Choose File</label>
+					<span id="fileName" class="file-name">No file chosen</span>
+				</div>
+				<div class="image-container">
+					<img id="filePreview" class="hidden file-preview" />
+					<div class="icon-buttons hidden">
+						<button
+							type="button"
+							onclick="discardImage()"
+							class="discard-button"
+						>
+							x
+						</button>
+						<button type="button" onclick="zoomImage()" class="zoom-button">
+							🔍
+						</button>
+					</div>
+				</div>
+				<button
+					type="button"
+					id="diagnoseButton"
+					onclick="uploadImage()"
+					disabled
+					class="disabled-btn"
+				>
+					Diagnose
+				</button>
+			</form>
+			<!-- Spinner -->
+			<div id="loadingSpinner" class="hidden spinner-wrapper">
+				<div class="spinner"></div>
+				<p>Analyzing image, please wait...</p>
+			</div>
+			<p id="result" class="hidden"></p>
+			<p id="severity" class="hidden"></p>
+			<p id="explanation" class="hidden"></p>
+		</div>
+		<div id="zoomModal" class="modal hidden">
+			<img class="modal-content" id="zoomedImage" />
+		</div>
+		<div
+			id="bottomInfo"
+			class="bottom-info"
+			style="position: fixed; bottom: 25px; left: 26px; width: 100%"
+		>
+			<h2>Our Team</h2>
+			<ul style="margin-top: 2rem">
 				<li>
-					<a href="/">Diagnosis</a>
+					<p>Ryan Vincent</p>
 				</li>
 				<li>
-					<a href="/about">About</a>
+					<p>Kevin Sugeng</p>
+				</li>
+				<li>
+					<p>Marco Areliano Suteja</p>
+				</li>
+				<li>
+					<p>Kathryn Tanardy</p>
+				</li>
+				<li>
+					<p>Verril Angelo</p>
 				</li>
 			</ul>
 		</div>
-	</nav>
-	<div id="diagnosis" class="container">
-		<h1>Skin Disease Diagnosis</h1>
-		<form id="uploadForm">
-			<div class="file-input-wrapper">
-				<input type="file" id="fileInput" accept="image/*" />
-				<label for="fileInput" class="file-label">Choose File</label>
-				<span id="fileName" class="file-name">No file chosen</span>
-			</div>
-			<div class="image-container">
-				<img id="filePreview" class="hidden file-preview" />
-				<div class="icon-buttons hidden">
-					<button
-						type="button"
-						onclick="discardImage()"
-						class="discard-button"
-					>
-						x
-					</button>
-					<button type="button" onclick="zoomImage()" class="zoom-button">
-						🔍
-					</button>
-				</div>
-			</div>
-			<button
-				type="button"
-				id="diagnoseButton"
-				onclick="uploadImage()"
-				disabled
-				class="disabled-btn"
-			>
-				Diagnose
-			</button>
-		</form>
-		<!-- Spinner -->
-		<div id="loadingSpinner" class="hidden spinner-wrapper">
-			<div class="spinner"></div>
-			<p>Analyzing image, please wait...</p>
-		</div>
-		<p id="result" class="hidden"></p>
-		<p id="severity" class="hidden"></p>
-		<p id="explanation" class="hidden"></p>
-	</div>
-	<div id="zoomModal" class="modal hidden">
-		<img class="modal-content" id="zoomedImage" />
-	</div>
-	<div
-		id="bottomInfo"
-		class="bottom-info"
-		style="position: fixed; bottom: 25px; left: 26px; width: 100%"
-	>
-		<h2>Our Team</h2>
-		<ul style="margin-top: 2rem">
-			<li>
-				<p>Ryan Vincent</p>
-			</li>
-			<li>
-				<p>Kevin Sugeng</p>
-			</li>
-			<li>
-				<p>Marco Areliano Suteja</p>
-			</li>
-			<li>
-				<p>Kathryn Tanardy</p>
-			</li>
-			<li>
-				<p>Verril Angelo</p>
-			</li>
-		</ul>
-	</div>
-	<script src="static/script.js"></script>
-</body>
+		<script src="static/script.js"></script>
+	</body>
 </html>
