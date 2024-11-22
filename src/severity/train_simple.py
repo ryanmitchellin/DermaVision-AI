@@ -70,7 +70,7 @@ def main():
 
     # Perform cross-validation
     for fold_index, (train_idx, val_idx) in enumerate(kf.split(images)):
-        print(f"\Processing fold {fold_index + 1}")
+        print(f"\nProcessing fold {fold_index + 1}")
 
         # Split data into training and validation sets for this fold
         X_train, X_val = images[train_idx], images[val_idx]

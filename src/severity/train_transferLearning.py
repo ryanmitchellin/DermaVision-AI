@@ -112,7 +112,7 @@ def main():
     best_models = []
 
     for fold, (train_i, validation_i) in enumerate(kf.split(X_train)):
-        print(f"Processing Fold {fold}")
+        print(f"\nProcessing Fold {fold}")
 
         # Split training data
         X_train_fold, X_val = X_train[train_i], X_train[validation_i]
