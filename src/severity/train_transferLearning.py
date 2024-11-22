@@ -12,11 +12,11 @@ IMG_SIZE = 224
 NUM_CLASSES = len(CATEGORIES)
 EPOCHS = 50
 
-# Map category names to numeric labels
-label_dict = {category: idx for idx, category in enumerate(CATEGORIES)}
-
 # Load images
 def load_images():
+    # Map category names to numeric labels
+    label_dict = {category: idx for idx, category in enumerate(CATEGORIES)}
+
     images, labels = [], []
     for category in CATEGORIES:
         category_folder = os.path.join(DATA_DIR, category)
@@ -125,8 +125,7 @@ def main():
             X_train_fold, y_train_fold,
             validation_data=(X_val, y_val),
             epochs=EPOCHS,
-            callbacks=get_callbacks(fold)
-        )
+            callbacks=get_callbacks(fold))
         
         # Store best validation accuracy
         best_val_acc = max(history.history['val_accuracy'])
@@ -150,7 +149,7 @@ def main():
     
     # Save best model
     best_model.save('best_mpox_classifier_final.keras')
-    print('\nBest model saved')
+    print("Final model saved as best_mpox_classifier_final.keras")
 
 if __name__ == '__main__':
     main()
