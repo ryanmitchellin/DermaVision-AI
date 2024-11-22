@@ -137,7 +137,7 @@ def main():
 
     # Print cross-validation results
     print('\nCross-validation results:')
-    print(f'Individual fold scores: {[f"{score:.4f}" for score in fold_scores]}')
+    print(f'Fold accuracies: {fold_scores}')
     print(f'Mean CV accuracy: {np.mean(fold_scores):.4f} (+/- {np.std(fold_scores):.4f})')
     
     # Evaluate best model
