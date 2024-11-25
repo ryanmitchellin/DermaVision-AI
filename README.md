@@ -1,6 +1,6 @@
-# Skin Diagnosis - Skin Disease Diagnosis Web Application
+# DermaVision AI
+This project is designed as a tool to assist users in identifying skin diseases by analyzing uploaded images. Upon submitting a picture, the system provides feedback on the diagnosed condition and, in cases where the disease is classified as mpox, also evaluate its severity level. 
 
-Skin diagnosis is a web application that allows users to upload images of skin lesions and get a diagnosis.
 
 ## Important Links
 
@@ -32,29 +32,37 @@ Main Features:
 
 Explain briefly what files are found where
 
+# TO DO: Modify this 
 ```bash
 repository
-├── static/                      # Frontend assets
-│ ├── style.css                  # CSS for styling
-│ ├── script.js                  # JavaScript for image handling
-│ └── about.js                   # JavaScript for the about page
-├── templates/                   # HTML templates
-│ ├── index.html                 # Main diagnosis page
-│ └── about.html                 # About Page for Disease information and team details
-├── src/                         # Backend source code
-│ └── mpox/                      # Application logic code
-│ ├── app.py                     # Flask server and routing
-│ ├── train.py                   # Training the model
-│ ├── test.py                    # Testing the model
-│ ├── output.py                  # Prediction output
-│ └── resources/                 # Resource files and test data
-└── README.md                    # Project documentation
+├── static/                        # Frontend assets
+│ ├── style.css                    # CSS for styling
+│ ├── script.js                    # JavaScript for image handling
+│ └── about.js                     # JavaScript for the about page
+├── templates/                     # HTML templates
+│ ├── index.html                   # Main diagnosis page
+│ └── about.html                   # About Page for Disease information and team details
+├── src/                           # Backend source code
+│ └── mpox/                        # Part 1: Skin Disease Classification
+│   │   ├── app.py                 # Flask server and routing
+│   │   ├── train.py               # Training the model
+│   │   ├── test.py                # Testing the model
+│   │   ├── output.py              # Prediction output
+│ └── severity/                    # Part 2: Skin Disease Classification
+│   │   ├── augmented_data         # Data output from keras_augmentation.py 
+│   │   │  ├── ...                 # Files storing images, each categorized into their class
+│   │   ├── kaggleClassified       # Files containing classified model data
+│   │   │  ├── ...                 # Images categorized into their class
+│   │   ├── keras_augmentation.py  # Augmenting Limited Data
+│   │   ├── train_simple.py        # Training the model
+│   │   ├── test.py                # Testing the model
+│ └── resources/                   # Resource files and test data
+└── README.md                      # Project documentation
 ```
 
 <a name="installation"></a>
 
-## 2. Installation
-
+## 2a. Installation: Part 1
 ### 1. Clone the repository
 
 ```bash
@@ -71,8 +79,10 @@ conda activate amazing
 
 ### 3. Download the dataset
 
-- Download the mpox-skin-lesion-dataset-version-20-msld-v20 dataset
-- Place it in the following directory structure: src/mpox/mpox-skin-lesion-dataset-version-20-msld-v20
+- Go to the source  https://www.kaggle.com/datasets/nafin59/monkeypox-skin-lesion-dataset/data (Nafin, n.d.).
+- Download the dataset by executing the provided code in a standalone .py file (Note: Make sure you don't download the dataset as zip as it messes up the pathway of the inner files).
+- The folder's path will be displayed in the terminal. Relocate it to ./src/mpox/.
+- Ensure that the file path './src/mpox/mpox-skin-lesion-dataset-version-20-msld-v20/versions/4' exists. 
 
 ### 4. Train the model
 
@@ -143,3 +153,9 @@ Output will be saved in ...
 - Use [VSCode](https://code.visualstudio.com/) or a similarly powerful IDE
 - Use [Copilot for free](https://dev.to/twizelissa/how-to-enable-github-copilot-for-free-as-student-4kal)
 - Sign up for [GitHub Education](https://education.github.com/)
+
+## 5. Reference
+
+Nafin, M., Monkeypox Skin Lesion Dataset, Kaggle. Available at:
+https://www.kaggle.com/datasets/nafin59/monkeypox-skin-lesion-dataset/data.
+
