@@ -54,7 +54,7 @@ print("Applying PCA for dimensionality reduction...")
 pca = PCA(n_components=50)
 features_reduction = pca.fit_transform(transformed_features)
 
-severity_level_information = [
+output = [
     [severity] + list(features)
     for severity, features in zip(classes, features_reduction)
 ]
