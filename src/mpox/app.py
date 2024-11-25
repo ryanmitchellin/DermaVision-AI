@@ -6,7 +6,7 @@ from tensorflow.keras.models import load_model
 
 app = Flask(__name__, static_folder='../../static', template_folder='../../')
 
-model_path = os.path.join(os.path.dirname(__file__), '../../my_final_model.keras')
+model_path = os.path.join(os.path.dirname(__file__), '../../final_cnn_model.keras')
 
 if os.path.exists(model_path):
     print(f"Loading model from: {model_path}")
