@@ -6,7 +6,8 @@ from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout, Input
 from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping
-from sklearn.model_selection import KFold
+# from sklearn.model_selection import KFold
+from sklearn.model_selection import StratifiedKFold
 
 # Constants
 DATA_DIR = './src/severity/augmented_data'
@@ -18,7 +19,7 @@ EPOCHS = 5
 # Load all images and labels from the dataset
 def load_all_images():
     # Map category names to numeric labels
-    label_dict = {category: idx for idx, category in enumerate(CATEGORIES)}
+    label_dict = {category: i for i, category in enumerate(CATEGORIES)}
 
     images, labels = [], []
     for category in CATEGORIES:
@@ -43,40 +44,50 @@ def load_all_images():
             labels.append(label_dict[category])
     return np.array(images), np.array(labels)
 
+# CNN model for image classification
+def create_cnn_model(input_shape=(IMG_SIZE, IMG_SIZE, 3), num_classes=NUM_CLASSES):
+    model = Sequential([
+        Input(shape=input_shape),
+        Conv2D(32, (3, 3), activation='relu'),
+        MaxPooling2D(2, 2),
+        Conv2D(64, (3, 3), activation='relu'),
+        MaxPooling2D(2, 2),
+        Flatten(),
+        Dense(128, activation='relu'),
+        Dropout(0.5),
+        Dense(num_classes, activation='softmax')
+    ])
+    model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+    return model
+
 def main():
-    # CNN model for image classification
-    def create_cnn_model(input_shape=(IMG_SIZE, IMG_SIZE, 3), num_classes=NUM_CLASSES):
-        model = Sequential([
-            Input(shape=input_shape),
-            Conv2D(32, (3, 3), activation='relu'),
-            MaxPooling2D(2, 2),
-            Conv2D(64, (3, 3), activation='relu'),
-            MaxPooling2D(2, 2),
-            Flatten(),
-            Dense(128, activation='relu'),
-            Dropout(0.5),
-            Dense(num_classes, activation='softmax')
-        ])
-        model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
-        return model
+
 
     # Load Data
     images, labels = load_all_images()
-    labels = to_categorical(labels, num_classes=NUM_CLASSES)
+    print(labels)
+    # labels = to_categorical(labels, num_classes=NUM_CLASSES)
 
     # Set up 5-fold cross-validation
-    kf = KFold(n_splits=5, shuffle=True, random_state=42)
+    # kf = KFold(n_splits=5, shuffle=True, random_state=42)
+    kf = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
     fold_scores = []
 
     # Perform cross-validation
-    for fold_index, (train_idx, val_idx) in enumerate(kf.split(images)):
+    # for fold_index, (train_idx, val_idx) in enumerate(kf.split(images)):
+    for fold_index, (train_idx, val_idx) in enumerate(kf.split(images, labels)):
         print(f"\nProcessing fold {fold_index + 1}")
+
+        print("TRAIN IDX NOW", train_idx)
 
         # Split data into training and validation sets for this fold
         X_train, X_val = images[train_idx], images[val_idx]
         y_train, y_val = labels[train_idx], labels[val_idx]
 
-        # Initialize the model
+        y_train = to_categorical(y_train, num_classes=NUM_CLASSES)
+        y_val = to_categorical(y_val, num_classes=NUM_CLASSES)
+
+        # Initialize model
         model = create_cnn_model()
 
         # Set up callbacks
@@ -99,9 +110,15 @@ def main():
     print(f'Fold accuracies: {fold_scores}')
     print(f'Mean CV accuracy: {np.mean(fold_scores):.4f} (+/- {np.std(fold_scores):.4f})')
 
+    # Train the best model on all data
+    print("\nTraining the best model on all data...")
+    y = to_categorical(y, num_classes=NUM_CLASSES)
+    best_model = create_cnn_model()
+    best_model.fit(images, y, epochs=EPOCHS)
+
     # Save the final model trained on all data
-    model.save('mpox_final_model.keras')
-    print("Final model saved as mpox_final_model.keras")
+    model.save('mpox_severity_best_model.keras')
+    print("Final model saved as mpox_severity_best_model.keras")
 
 
 if __name__ == '__main__':

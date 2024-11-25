@@ -13,7 +13,7 @@ TEST_DIR = './src/severity/test_data'
 model = load_model('mpox_final_model.keras')
 
 # Class labels
-class_labels = ['macule', 'papule', 'pustule', 'scab']
+class_labels = ['macule', 'papule', 'pustule', 'scab', 'vesicles']
 
 def preprocess_image(image_path):
     image = cv2.imread(image_path)
