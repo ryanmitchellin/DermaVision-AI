@@ -50,6 +50,8 @@ def main():
     kf = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
     fold_scores = []
 
+    best_accuracy = -1
+
     # Perform cross-validation
     for fold_index, (train_idx, val_idx) in enumerate(kf.split(X, y)):
         print(f"\nProcessing fold {fold_index + 1}")
@@ -79,17 +81,17 @@ def main():
         fold_scores.append(val_accuracy)
         print(f"Fold {fold_index + 1} - Validation Accuracy: {val_accuracy:.4f}")
 
+        # Save the best model
+        if val_accuracy > best_accuracy:
+            best_accuracy = val_accuracy
+            best_model = model
+
+
     # Calculate and display cross-validation results
     print('\nCross-validation results:')
     print(f'Fold accuracies: {fold_scores}')
     print(f'Mean CV accuracy: {np.mean(fold_scores):.4f} (+/- {np.std(fold_scores):.4f})')
     
-    # Train the best model on all data
-    print("\nTraining the best model on all data...")
-    y = to_categorical(y, num_classes=NUM_CLASSES)
-    best_model = create_cnn_model(input_shape=(X.shape[1],))
-    best_model.fit(X, y, epochs=EPOCHS)
-
     # Save the final model trained on all data
     best_model.save('fourierPCA_mpox_severity_final_model.keras')
     print("Final model saved as fourierPCA_mpox_severity_final_model.keras")
