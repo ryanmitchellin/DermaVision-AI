@@ -124,8 +124,7 @@ python src/mpox/3_1_train_pca_rf.py
 ```
 
 ### 8. (Optional) Test the model
-To evaluate the model's performance:
-Part 1
+Part 1: Skin diseases Classification
 ```bash
 cd src/mpox
 python src/mpox/train.py
