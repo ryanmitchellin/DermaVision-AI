@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 from sklearn.decomposition import PCA
 import os
-import re
+import joblib
 
 source = './src/severity/augmented_data'
 
@@ -46,3 +46,7 @@ cols = ['Severity'] + [f'Principal_Components_{i}' for i in range(features_reduc
 df = pd.DataFrame(severity_level_information, columns=cols)
 df.to_csv(output_path, index=False)
 print(f"Features saved to {output_path}")
+
+# Save the PCA Model
+joblib.dump(pca, './src/severity/models/pca_model.pkl')
+print("Final model saved as pca_model.pkl")
