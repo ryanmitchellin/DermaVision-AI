@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import os
 from sklearn.decomposition import PCA
+import joblib
 
 source_directory = './src/severity/augmented_data'
 
@@ -54,7 +55,7 @@ print("Applying PCA for dimensionality reduction...")
 pca = PCA(n_components=50)
 features_reduction = pca.fit_transform(transformed_features)
 
-output = [
+severity_level_information = [
     [severity] + list(features)
     for severity, features in zip(classes, features_reduction)
 ]
@@ -64,3 +65,7 @@ output_csv = './src/severity/output_pca.csv'
 df = pd.DataFrame(severity_level_information, columns=cols)
 df.to_csv(output_csv, index=False)
 print(f"Features saved to {output_csv}")
+
+# Save the PCA Model
+joblib.dump(pca, './src/severity/models/2_1_fourier_pca_model.pkl')
+print("Final model saved as 2_1_fourier_pca_model.pkl")

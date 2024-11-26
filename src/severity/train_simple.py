@@ -67,7 +67,7 @@ def main():
     kf = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
     fold_scores = []
 
-    best_accuracy = -1
+    best_accuracy = 0
 
     # Perform cross-validation
     for fold_index, (train_idx, val_idx) in enumerate(kf.split(images, labels)):
@@ -109,8 +109,8 @@ def main():
     print(f'Mean CV accuracy: {np.mean(fold_scores):.4f} (+/- {np.std(fold_scores):.4f})')
 
     # Save the best model
-    best_model.save('mpox_severity_best_model.keras')
-    print("Final model saved as mpox_severity_best_model.keras")
+    best_model.save('3_2_mpox_severity_best_model.keras')
+    print("Final model saved as 3_2_mpox_severity_best_model.keras")
 
 
 if __name__ == '__main__':
