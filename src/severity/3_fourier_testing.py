@@ -67,5 +67,5 @@ df.to_csv(output_csv, index=False)
 print(f"Features saved to {output_csv}")
 
 # Save the PCA Model
-joblib.dump(pca, './src/severity/models/2_1_fourier_pca_model.pkl')
-print("Final model saved as 2_1_fourier_pca_model.pkl")
+joblib.dump(pca, './src/severity/models/3_fourier_pca_model.pkl')
+print("Final model saved as 3_fourier_pca_model.pkl")
