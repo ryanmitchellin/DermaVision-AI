@@ -62,7 +62,7 @@ repository
 
 <a name="installation"></a>
 
-## 2a. Installation: Part 1
+## 2 Installation
 ### 1. Clone the repository
 
 ```bash
@@ -97,19 +97,17 @@ python src/mpox/train.py
 - Save the model as 'final_cnn_model.keras'
 
 This will generate a model file in the src/mpox/models directory.
+TODO: Modify this 
+This step will take approximately an hour to run. For a shortcut, the data produced after the model https://drive.google.com/file/d/1fzZ5aBODV9wzLW3VAQFYr-EGx6x-ru-t/view?usp=sharing . Instruction to write: Make sure to extract the zip and locate “my_dir” folder and final_cnn_model.keras under the root folder “2024_3_PROJECT_08”
 
-### 5. Run the application
-
-```bash
-cd src/mpox
-python app.py
-```
-
-The application will be available at: http://127.0.0.1:5000
-
-### 6. (Optional) Test the model
+### 5. (Optional) Test the model
 
 To evaluate the model's performance:
+
+
+
+# TO DO: UPDATE P2
+
 
 ### Requirements
 
@@ -126,18 +124,17 @@ To evaluate the model's performance:
 
 ## 3. Reproduction
 
-Demonstrate how your work can be reproduced, e.g. the results in your report.
+1. Go to the root of the project file, then execute the command below: 
 
 ```bash
-mkdir tmp && cd tmp
-wget https://yourstorageisourbusiness.com/dataset.zip
-unzip dataset.zip
-conda activate amazing
-python evaluate.py --epochs=10 --data=/in/put/dir
-```
+cd src/mpox
+python app.py
 
-Data can be found at ...
-Output will be saved in ...
+```
+2. The application will be available at: http://127.0.0.1:5000
+3. Open the application 
+4. Upload an image file representing any skin disease.
+5. Results will be displayed on the website's main page.
 
 <a name="guide"></a>
 
