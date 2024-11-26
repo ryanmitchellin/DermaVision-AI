@@ -168,5 +168,8 @@ src/severity/ClassifiedResized/
 src/severity/augmented_data/
 src/severity/augmented_autoencoder/
 
+# Ignore PCA and Fourier PCA Output .csv
+*.csv
+
 # Ignore keras file
 *.keras
