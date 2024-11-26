@@ -138,7 +138,7 @@ python src/mpox/3_2_test_pca_rf.py
 ```
 
 ### Requirements
-All requirements will be installed requirements.yml
+All requirements will be installed requirements.txt
 - Python 3.8+
 - VSCode 
 - Required packages:
