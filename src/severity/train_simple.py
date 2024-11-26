@@ -109,8 +109,8 @@ def main():
     print(f'Mean CV accuracy: {np.mean(fold_scores):.4f} (+/- {np.std(fold_scores):.4f})')
 
     # Save the best model
-    best_model.save('3_2_mpox_severity_best_model.keras')
-    print("Final model saved as 3_2_mpox_severity_best_model.keras")
+    best_model.save("./src/severity/models/3_2_mpox_severity_best_model.keras")
+    print(f"Best model saved as: {"./src/severity/models/3_2_mpox_severity_best_model.keras"}")
 
 
 if __name__ == '__main__':
