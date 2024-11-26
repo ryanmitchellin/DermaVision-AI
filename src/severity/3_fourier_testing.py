@@ -61,7 +61,7 @@ severity_level_information = [
 ]
 
 cols = ['Severity'] + [f'Principal_Components_{i}' for i in range(features_reduction.shape[1])]
-output_csv = './src/severity/output_pca.csv'
+output_csv = './src/severity/fourier_pca_output.csv'
 df = pd.DataFrame(severity_level_information, columns=cols)
 df.to_csv(output_csv, index=False)
 print(f"Features saved to {output_csv}")
