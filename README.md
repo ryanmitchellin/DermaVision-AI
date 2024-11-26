@@ -81,8 +81,11 @@ conda activate amazing
 
 - Go to the source  https://www.kaggle.com/datasets/nafin59/monkeypox-skin-lesion-dataset/data (Nafin, n.d.).
 - Download the dataset by executing the provided code in a standalone .py file (Note: Make sure you don't download the dataset as zip as it messes up the pathway of the inner files).
-- The folder's path will be displayed in the terminal. Relocate it to ./src/mpox/.
-- Ensure that the file path './src/mpox/mpox-skin-lesion-dataset-version-20-msld-v20/versions/4' exists. 
+- The folder's path will be displayed in the terminal. Relocate it to './src/mpox/.'
+- Ensure that the file path './src/mpox/mpox-skin-lesion-dataset-version-20-msld-v20/versions/4' exists.
+- Download the classified dataset. Original data is retrieved from the same dataset as above (Nafin, n.d.). https://drive.google.com/file/d/1nbV4X2f4PvFahuJbwLZc9pmFaODSSN7j/view?usp=sharing 
+- Extract and relocate the file to './src/severity/'
+- Ensure that the file path './src/severity/classifiedData' exists.
 
 ### 4. Train the model
 
