@@ -162,6 +162,15 @@ cython_debug/
 # Ignore mpox dataset
 src/mpox/mpox-skin-lesion-dataset-version-20-msld-v20/
 
+# Ignore severity dataset
+src/severity/kaggleClassified/
+src/severity/ClassifiedResized/
+src/severity/augmented_data/
+src/severity/augmented_autoencoder/
+
+# Ignore PCA and Fourier PCA Output .csv
+*.csv
+
 # Ignore keras file
 *.keras
 
