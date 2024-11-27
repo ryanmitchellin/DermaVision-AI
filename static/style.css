@@ -1,0 +1,414 @@
+/* Reset and base styles */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	overflow-y: scroll;
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: "Arial", sans-serif;
+	background: linear-gradient(to right, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
+}
+
+/* Navbar */
+.top-navbar {
+	background-color: #007bff;
+	padding: 1rem;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 100;
+}
+
+.navbar-content {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.navbar-title a {
+	font-weight: bold;
+	font-size: 1.5rem;
+	color: white;
+	text-decoration: none;
+}
+
+.top-navbar ul {
+	list-style: none;
+	display: flex;
+	justify-content: center;
+	gap: 2rem;
+	margin: 0;
+	padding: 0;
+}
+
+.top-navbar li {
+	display: inline;
+}
+
+.top-navbar a {
+	color: white;
+	text-decoration: none;
+	font-size: 1.2rem;
+	transition: color 0.3s;
+}
+
+.top-navbar a:hover {
+	color: #e3eeff;
+}
+
+body {
+	padding-top: 80px;
+}
+
+/* Container styling */
+.container {
+	background-color: white;
+	padding: 2rem;
+	border-radius: 15px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+	width: 100%;
+	max-width: 600px;
+	margin-top: 1.5rem;
+}
+
+/* Title styling */
+h1 {
+	color: #333;
+	font-size: 2rem;
+	margin-bottom: 1.5rem;
+	text-align: center;
+}
+
+/* Custom file input styling */
+.file-input-wrapper {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+#fileInput {
+	display: none;
+}
+
+.file-label {
+	display: inline-block;
+	background-color: #fcb001;
+	color: white;
+	padding: 0.8rem 1.2rem;
+	border-radius: 8px;
+	cursor: pointer;
+	font-size: 1rem;
+	transition: background-color 0.3s ease;
+}
+
+.file-label:hover {
+	background-color: #fc8701;
+}
+
+.file-name {
+	font-size: 1rem;
+	color: #555;
+}
+
+/* Image container styling */
+.image-container {
+	position: relative;
+	display: inline-block;
+	max-width: 500px;
+	margin-top: 1rem;
+}
+
+/* File preview styling */
+.file-preview {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease;
+}
+
+.image-container:hover .file-preview {
+	opacity: 0.4;
+}
+
+/* Icon buttons container */
+.icon-buttons {
+	position: absolute;
+	top: 0px;
+	right: 5px;
+	display: flex;
+	gap: 5px;
+}
+
+/* Discard button styling */
+.discard-button,
+.zoom-button {
+	background-color: red;
+	color: white;
+	border: none;
+	padding: 0.2rem;
+	height: 35px;
+	width: 35px;
+	border-radius: 10%;
+	cursor: pointer;
+	font-size: 0.9rem;
+	font-weight: bold;
+	transition: background-color 0.3s;
+}
+
+.zoom-button {
+	background-color: #007bff;
+}
+
+.discard-button:hover {
+	background-color: darkred;
+}
+
+.zoom-button:hover {
+	background-color: #0056b3;
+}
+
+.image-container:hover .icon-buttons {
+	display: flex;
+}
+
+/* Button styling */
+button {
+	background-color: #007bff;
+	color: white;
+	border: none;
+	padding: 1rem;
+	border-radius: 8px;
+	cursor: pointer;
+	font-size: 1.2rem;
+	transition: background-color 0.3s ease;
+	width: 100%;
+	margin-top: 1rem;
+}
+
+button:hover {
+	background-color: #0056b3;
+}
+
+button.disabled-btn {
+	background-color: grey;
+	color: white;
+	cursor: not-allowed;
+}
+
+/* Result text styling */
+#result {
+	margin-top: 1.5rem;
+	font-size: 1.2rem;
+	color: #333;
+	text-align: center;
+	padding: 1rem;
+	background-color: #f8f9fa;
+	border-radius: 8px;
+	border: 1px solid #dee2e6;
+}
+
+/* Additional spacing for severity and explanation */
+#severity,
+#explanation {
+	margin-top: 1rem;
+	font-size: 1.1rem;
+	color: #555;
+	padding: 0.8rem;
+	background-color: #f1f3f5;
+	border-radius: 8px;
+	border: 1px solid #dee2e6;
+}
+
+/* About Page Styling */
+.about-container {
+	background-color: #f9f9f9; /* Light gray background for the About section */
+	padding: 2rem;
+	border-radius: 15px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+	max-width: 70%;
+	margin: 2rem auto;
+}
+
+.about-container:hover {
+	background-color: #eef5ff;
+}
+
+.about-container h1 {
+	color: #007bff;
+	font-size: 2rem;
+	text-align: center;
+	margin-bottom: 1rem;
+	border-bottom: 2px solid #e3eeff;
+	padding-bottom: 0.5rem;
+}
+
+.about-container.card h1 {
+	color: #007bff;
+}
+
+.about-container p {
+	font-size: 1.1rem;
+	line-height: 1.6;
+	color: #444;
+	text-align: justify;
+	margin-bottom: 1rem;
+}
+
+.details-container img {
+	margin-top: 3rem;
+	margin-bottom: 3rem;
+}
+
+.details-container h2 {
+	margin-top: 1.5rem;
+	margin-bottom: 1rem;
+	color: #007bff;
+	font-size: 1.5rem;
+}
+
+.details-container ul {
+	margin-left: 2rem;
+	line-height: 1.6;
+}
+
+.details-container ul li {
+	margin-bottom: 0.5rem;
+	color: #333;
+	font-size: 1rem;
+}
+
+/* Modal styling */
+.modal {
+	display: flex;
+	position: fixed;
+	z-index: 101;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.8);
+	justify-content: center;
+	align-items: center;
+}
+
+.modal-content {
+	max-width: 75%;
+	max-height: 75%;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hidden {
+	display: none;
+}
+
+/* Bottom info styling */
+.bottom-info {
+	width: 100%;
+	text-align: left;
+	padding: 1rem;
+	color: #007bff;
+	margin-top: 2rem;
+}
+
+.bottom-info h2 {
+	font-size: 1.8rem;
+	font-weight: bold;
+	color: #007bff;
+	margin-bottom: 1rem;
+}
+
+.bottom-info ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.bottom-info ul li {
+	margin: 1rem 0;
+	font-size: 1.2rem;
+	color: #333;
+}
+
+.bottom-info p {
+	color: #007bff;
+	text-decoration: none;
+	font-weight: 500;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+	.container {
+		padding: 1.5rem;
+	}
+
+	h1 {
+		font-size: 1.5rem;
+	}
+
+	button {
+		padding: 0.7rem;
+	}
+}
+
+/* Link below diagnosis */
+.learn-more-link {
+	display: block;
+	margin-top: 1rem;
+	font-size: 1.1rem;
+	color: #007bff;
+	text-decoration: none;
+	font-weight: bold;
+	transition: color 0.3s ease;
+}
+
+.learn-more-link:hover {
+	color: #0056b3;
+}
+
+/* Spinner styles */
+.spinner-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: 1rem;
+}
+
+.spinner {
+	width: 40px;
+	height: 40px;
+	border: 4px solid rgba(0, 0, 0, 0.1);
+	border-top: 4px solid #007bff;
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.hidden {
+	display: none;
+}

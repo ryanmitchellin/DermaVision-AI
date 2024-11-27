@@ -173,3 +173,6 @@ src/severity/augmented_autoencoder/
 
 # Ignore keras file
 *.keras
+
+# Ignore my_dir folder
+my_dir/

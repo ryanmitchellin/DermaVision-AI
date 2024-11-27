@@ -74,7 +74,8 @@ if __name__ == "__main__":
     answer_path = os.path.join(data_path, 'answer.txt')
     actual_labels = load_actual_labels(answer_path)
     
-    final_model_path = 'my_final_model.keras'
+    # CNN
+    final_model_path = 'final_cnn_model.keras'
     
     # Predict classes for the loaded images
     predicted_labels = predict_categories(final_model_path, images)
@@ -99,3 +100,4 @@ if __name__ == "__main__":
     # Output the counts of correct and incorrect predictions
     print(f"\nTotal Correct Predictions: {correct_count}")
     print(f"Total Incorrect Predictions: {incorrect_count}")
+
