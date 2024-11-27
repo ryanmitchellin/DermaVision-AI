@@ -50,12 +50,14 @@ repository
 │   │   ├── train.py                 # Training the model
 │   │   ├── test.py                  # Testing the model
 │   │   ├── output.py                # Prediction output
-│ └── severity/                      # Part 2: Skin Disease Classification
+│ └── stages/                        # Part 2: Stages Classification
 │   │   ├── augmented_data           # Data output from keras_augmentation.py 
 │   │   │  ├── ...                   # Files storing images, each categorized into their class
-│   │   ├── kaggleClassified         # Files containing classified model data
+│   │   ├── classifiedData           # Files containing classified model data
 │   │   │  ├── ...                   # Images categorized into their class
 │   │   ├── draft                    # Code used for research purposes in the past but is currently not in use
+│   │   │  ├── ...                   # Files containing different unused algorithms
+│   │   ├── test_data                # A placeholder for testing a model with input images.
 │   │   │  ├── ...                   # Files containing different unused algorithms 
 │   │   ├── 1_keras_augmentation.py  # Augmenting Limited Data
 │   │   ├── 2_pca.py                 # Feature extraction using PCA
@@ -137,7 +139,7 @@ cd src/mpox
 python src/mpox/train.py
 ``` 
 
-Part 2: Stage Classification
+Part 2: Stages Classification
 
 Add image data to the file located at ./src/stages/test_data and run the following command:
 ```bash
