@@ -438,3 +438,35 @@ button.disabled-btn {
 .hidden {
 	display: none;
 }
+
+/* Result text container styling */
+.result-container {
+	margin-top: 1.5rem;
+	font-size: 1.2rem;
+	color: #333;
+	text-align: center;
+	padding: 1rem;
+	background-color: #f8f9fa;
+	border-radius: 8px;
+	border: 1px solid #dee2e6;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Additional styling for result-container elements */
+.result-container:not(:last-child) {
+	margin-bottom: 1rem;
+}
+
+/* Link styling */
+.learn-more-link {
+	display: block;
+	margin-top: 1rem;
+	font-size: 1.1rem;
+	color: orange;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.learn-more-link:hover {
+	color: darkorange;
+}
