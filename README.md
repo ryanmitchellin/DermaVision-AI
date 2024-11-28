@@ -1,5 +1,5 @@
 # DermaVision AI
-This project is designed as a tool to assist users in identifying skin diseases by analyzing uploaded images. Upon submitting a picture, the system provides feedback on the diagnosed condition and, in cases where the disease is classified as mpox, also evaluate its severity level. 
+This project is designed as a tool to assist users in identifying skin diseases by analyzing uploaded images. Upon submitting a picture, the system provides feedback on the diagnosed condition and, in cases where the disease is classified as mpox, also evaluate its stages level. 
 
 
 ## Important Links
@@ -92,8 +92,8 @@ pip install -r requirements.txt
 - The folder's path will be displayed in the terminal. Relocate it to './src/mpox/.'
 - Ensure that the file path './src/mpox/mpox-skin-lesion-dataset-version-20-msld-v20/versions/4' exists.
 - Download the classified dataset. Original data is retrieved from the same dataset as above (Nafin, n.d.). https://drive.google.com/file/d/1nbV4X2f4PvFahuJbwLZc9pmFaODSSN7j/view?usp=sharing 
-- Extract and relocate the file to './src/severity/'
-- Ensure that the file path './src/severity/classifiedData' exists.
+- Extract and relocate the file to './src/stages/'
+- Ensure that the file path './src/stages/classifiedData' exists.
 
 ### 4. Augment data
 ```bash
