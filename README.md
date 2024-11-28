@@ -159,6 +159,8 @@ All requirements will be installed requirements.txt
   - scikit-learn
   - Jobliv
   - keras-turner
+  - kagglehub
+  - Pillow
 
 <a name="repro"></a>
 
