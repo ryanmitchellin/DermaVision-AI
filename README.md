@@ -177,6 +177,8 @@ python app.py
 4. Upload an image file representing any skin disease.
 5. Results will be displayed on the website's main page.
 
+Note: This application assumes all input is a valid image of skin disease.
+
 <a name="guide"></a>
 
 ## 4 Reference
