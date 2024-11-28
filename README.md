@@ -74,7 +74,7 @@ repository
 
 ```bash
 git clone git@github.com:sfu-cmpt340/2024_3_project_08.git
-cd 2024_3_project_08
+2024_3_project_08
 ```
 
 ### 2. Set Up environment
