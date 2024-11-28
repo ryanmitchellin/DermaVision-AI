@@ -112,7 +112,8 @@ def main():
     # Calculate and display cross-validation results
     print('\nCross-validation results:')
     print(f'Fold accuracies: {fold_scores}')
-    print(f'Mean CV accuracy: {np.mean(fold_scores):.4f}')
+    print(f'Mean Validation Accuracy: {np.mean(fold_scores):.4f}')
+    print(f"Best Validation Accuracy: {best_accuracy:.4f}")
 
     # Save the best model
     best_model.save("./src/stages/draft/6_mpox_stages_best_model.keras")

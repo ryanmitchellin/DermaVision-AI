@@ -51,6 +51,7 @@ for fold_index, (train_idx, val_idx) in enumerate(kf.split(X, y)):
 
 # Summary of cross-validation
 print("\nCross-Validation Results:")
+print(f'Fold accuracies: {fold_scores}')
 print(f"Mean Validation Accuracy: {np.mean(fold_scores):.4f}")
 print(f"Best Validation Accuracy: {best_accuracy:.4f}")
 print(f"Best model saved as: {"./src/stages/draft/5_fourier_pca_rf_stages.pkl"}")
