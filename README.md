@@ -15,7 +15,7 @@ Record a short video (1:40 - 2 minutes maximum) or gif or a simple screen record
 1. [Demo](#demo)
 2. [Installation](#installation)
 3. [Reproducing this project](#repro)
-4. [Guidance](#guide)
+4. [Reference](#reference)
 
 <a name="demo"></a>
 
