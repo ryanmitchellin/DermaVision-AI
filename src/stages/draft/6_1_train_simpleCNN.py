@@ -104,10 +104,10 @@ def main():
             best_model = model
 
     # Print training history
-    print(history.history['loss'])
-    print(history.history['val_loss'])
-    print(history.history['accuracy'])
-    print(history.history['val_accuracy']) 
+    print(f'Loss: {history.history['loss']}')
+    print(f'Val_loss: {history.history['val_loss']}')
+    print(f'Accuracy: {history.history['accuracy']}')
+    print(f'Val_accuracy: {history.history['val_accuracy']}') 
 
     # Calculate and display cross-validation results
     print('\nCross-validation results:')
