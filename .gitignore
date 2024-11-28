@@ -160,13 +160,15 @@ cython_debug/
 #.idea/
 
 # Ignore mpox dataset
-src/mpox/mpox-skin-lesion-dataset-version-20-msld-v20/
+src/mpox/4
 
 # Ignore severity dataset
-src/severity/kaggleClassified/
-src/severity/ClassifiedResized/
-src/severity/augmented_data/
-src/severity/augmented_autoencoder/
+src/stages/kaggleClassified/
+src/stages/ClassifiedResized/
+src/stages/augmented_data/
+src/stages/augmented_autoencoder/
+src/stages/models/2_pca_model.pkl
+src/stages/models/3_pca_rf_stages.pkl
 
 # Ignore PCA and Fourier PCA Output .csv
 *.csv

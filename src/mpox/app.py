@@ -1,18 +1,37 @@
 import os
 import cv2
 import numpy as np
+import pandas as pd
 from flask import Flask, request, jsonify, render_template
 from tensorflow.keras.models import load_model
+import joblib
+from sklearn.decomposition import PCA
 
 app = Flask(__name__, static_folder='../../static', template_folder='../../')
 
-model_path = os.path.join(os.path.dirname(__file__), '../../final_cnn_model.keras')
+# Load models
+cnn_model_path = os.path.join(os.path.dirname(__file__), '../../final_cnn_model.keras')
+pca_model_path = os.path.join(os.path.dirname(__file__), '../stages/models/2_pca_model.pkl')
+rf_model_path = os.path.join(os.path.dirname(__file__), '../stages/models/3_pca_rf_stages.pkl')
 
-if os.path.exists(model_path):
-    print(f"Loading model from: {model_path}")
-    model = load_model(model_path)
+
+if os.path.exists(cnn_model_path):
+    print(f"Loading CNN model from: {cnn_model_path}")
+    cnn_model = load_model(cnn_model_path)
 else:
-    raise FileNotFoundError(f"Model file not found at path: {model_path}")
+    raise FileNotFoundError(f"Model file not found at path: {cnn_model_path}")
+
+if os.path.exists(pca_model_path):
+    print(f"Loading PCA model from: {pca_model_path}")
+    pca = joblib.load(pca_model_path)
+else:
+    raise FileNotFoundError(f"PCA model file not found at path: {pca_model_path}")
+
+if os.path.exists(rf_model_path):
+    print(f"Loading Random Forest model from: {rf_model_path}")
+    rf_model = joblib.load(rf_model_path)
+else:
+    raise FileNotFoundError(f"Random Forest model file not found at path: {rf_model_path}")
 
 categories = ['Cowpox', 'Healthy', 'HFMD', 'Measles', 'Chickenpox', 'Monkeypox']
 
@@ -31,29 +50,51 @@ def predict():
 
     file = request.files['file']
     image = cv2.imdecode(np.frombuffer(file.read(), np.uint8), cv2.IMREAD_COLOR)
-    
-    # Preprocess the image for the model
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-    image = cv2.resize(image, (64, 64))
-    image = np.array(image).astype('float32') / 255.0
-    image = np.expand_dims(image, axis=0)
 
-    # Make a prediction
-    prediction = model.predict(image)
-    predicted_label = categories[np.argmax(prediction)]
-    
-    # Check if the predicted label is Monkeypox
-    if predicted_label == 'Monkeypox':
-        # Placeholder values for severity and explanation
-        severity = "Moderate"  
-        explanation = "The detected pattern and characteristics of lesions suggest a moderate case of Monkeypox."  
-        return jsonify({
-            "prediction": predicted_label,
-            "severity": severity,
-            "explanation": explanation
-        })
-    else:
+    # Preprocess for CNN
+    cnn_image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    cnn_image = cv2.resize(cnn_image, (64, 64))
+    cnn_image = np.array(cnn_image).astype('float32') / 255.0
+    cnn_image = np.expand_dims(cnn_image, axis=0)
+
+    # CNN prediction
+    cnn_prediction = cnn_model.predict(cnn_image)
+    predicted_label_index = np.argmax(cnn_prediction)
+    confidence = cnn_prediction[0][predicted_label_index]
+
+    # Confidence threshold for determining if input is valid
+    confidence_threshold = 0.5  # Adjust this value as needed
+    if confidence < confidence_threshold:
+        return jsonify({"error": "Error: Input could not be classified. Please provide a clearer image."}), 400
+
+    # Determine predicted label
+    predicted_label = categories[predicted_label_index]
+
+    # If the prediction is not Monkeypox, return only the prediction
+    if predicted_label != "Monkeypox":
         return jsonify({"prediction": predicted_label})
+
+    # Preprocess for PCA + RF if the case is Monkeypox
+    rf_image = cv2.resize(image, (128, 128))
+    rf_image = rf_image.flatten().astype('float32')
+    rf_image_pca = pca.transform([rf_image])
+
+    # RF prediction for severity
+    rf_prediction = rf_model.predict(rf_image_pca)[0]
+    rf_proba = rf_model.predict_proba(rf_image_pca)[0]
+    severity = rf_prediction
+
+    # Convert severity to human-readable text
+    severity_labels = ["Mild", "Moderate", "Severe"]
+    severity_text = severity_labels[severity] if severity < len(severity_labels) else "Unknown"
+
+    # Return full details for Monkeypox cases
+    return jsonify({
+        "prediction": predicted_label,
+        "severity": severity_text,
+        "confidence": rf_proba[severity] * 100,
+        "explanation": f"The model determined the severity level as {severity_text} based on the given image."
+    })
 
 if __name__ == "__main__":
     app.run(debug=True)

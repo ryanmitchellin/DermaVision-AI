@@ -3,14 +3,14 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Skin Disease Diagnosis</title>
+		<title>DermavisionAI</title>
 		<link rel="stylesheet" href="static/style.css" />
 	</head>
 	<body>
 		<nav class="top-navbar">
 			<div class="navbar-content">
 				<div class="navbar-title">
-					<a href="/">Skin Diagnosis App</a>
+					<a href="/">DermavisionAI</a>
 				</div>
 				<ul>
 					<li>
@@ -23,24 +23,39 @@
 			</div>
 		</nav>
 		<div id="diagnosis" class="container">
-			<h1>Skin Disease Diagnosis</h1>
+			<h1>DermavisionAI</h1>
 			<form id="uploadForm">
 				<div class="file-input-wrapper">
-					<input type="file" id="fileInput" accept="image/*" />
+					<input 
+						type="file" 
+						id="fileInput" 
+						accept="image/*" 
+						aria-label="Choose an image file for diagnosis" 
+					/>
 					<label for="fileInput" class="file-label">Choose File</label>
 					<span id="fileName" class="file-name">No file chosen</span>
 				</div>
 				<div class="image-container">
-					<img id="filePreview" class="hidden file-preview" />
+					<img 
+						id="filePreview" 
+						class="hidden file-preview" 
+						alt="Selected image preview" 
+					/>
 					<div class="icon-buttons hidden">
 						<button
 							type="button"
 							onclick="discardImage()"
 							class="discard-button"
+							aria-label="Discard the selected image"
 						>
 							x
 						</button>
-						<button type="button" onclick="zoomImage()" class="zoom-button">
+						<button 
+							type="button" 
+							onclick="zoomImage()" 
+							class="zoom-button"
+							aria-label="Zoom in on the selected image"
+						>
 							🔍
 						</button>
 					</div>
@@ -51,12 +66,13 @@
 					onclick="uploadImage()"
 					disabled
 					class="disabled-btn"
+					aria-label="Diagnose the selected image"
 				>
 					Diagnose
 				</button>
 			</form>
 			<!-- Spinner -->
-			<div id="loadingSpinner" class="hidden spinner-wrapper">
+			<div id="loadingSpinner" class="hidden spinner-wrapper" role="alert" aria-live="polite">
 				<div class="spinner"></div>
 				<p>Analyzing image, please wait...</p>
 			</div>
@@ -65,15 +81,11 @@
 			<p id="explanation" class="hidden"></p>
 		</div>
 		<div id="zoomModal" class="modal hidden">
-			<img class="modal-content" id="zoomedImage" />
+			<img class="modal-content" id="zoomedImage" alt="Zoomed selected image" />
 		</div>
-		<div
-			id="bottomInfo"
-			class="bottom-info"
-			style="position: fixed; bottom: 25px; left: 26px; width: 100%"
-		>
+		<footer id="bottomInfo" class="bottom-info">
 			<h2>Our Team</h2>
-			<ul style="margin-top: 2rem">
+			<ul>
 				<li>
 					<p>Ryan Vincent Mitchellin</p>
 				</li>
@@ -90,7 +102,7 @@
 					<p>Verril Angelo</p>
 				</li>
 			</ul>
-		</div>
+		</footer>
 		<script src="static/script.js"></script>
 	</body>
 </html>
