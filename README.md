@@ -179,7 +179,7 @@ python app.py
 
 Note: This application assumes all input is a valid image of skin disease.
 
-<a name="guide"></a>
+<a name="reference"></a>
 
 ## 4 Reference
 
