@@ -1,5 +1,5 @@
 # DermaVision AI
-This project is designed as a tool to assist users in identifying skin diseases by analyzing uploaded images. Upon submitting a picture, the system provides feedback on the diagnosed condition and, in cases where the disease is classified as mpox, also evaluate its severity level. 
+This project is designed as a tool to assist users in identifying skin diseases by analyzing uploaded images. Upon submitting a picture, the system provides feedback on the diagnosed condition and, in cases where the disease is classified as mpox, also evaluate its stages level. 
 
 
 ## Important Links
@@ -92,23 +92,23 @@ pip install -r requirements.txt
 - The folder's path will be displayed in the terminal. Relocate it to './src/mpox/.'
 - Ensure that the file path './src/mpox/mpox-skin-lesion-dataset-version-20-msld-v20/versions/4' exists.
 - Download the classified dataset. Original data is retrieved from the same dataset as above (Nafin, n.d.). https://drive.google.com/file/d/1nbV4X2f4PvFahuJbwLZc9pmFaODSSN7j/view?usp=sharing 
-- Extract and relocate the file to './src/severity/'
-- Ensure that the file path './src/severity/classifiedData' exists.
+- Extract and relocate the file to './src/stages/'
+- Ensure that the file path './src/stages/classifiedData' exists.
 
 ### 4. Augment data
 ```bash
-cd src/severity
+cd src/stages
 python 1_keras_augmentation.py
 ```
 ### 5. Extract features from data using Principal Component Analysis (PCA).
 ```bash
-cd src/severity
+cd src/stages
 python 2_pca.py
 ```
 ### 6. Train the first model
 ```bash
 cd src/mpox
-python src/mpox/train.py
+python train.py
 ```
 
 #### key features:
@@ -125,8 +125,8 @@ If you decide to download the data, remember to unzip the file and relocate the 
 
 ### 7. Train the second model
 ```bash
-cd src/severity
-python src/mpox/3_1_train_pca_rf.py
+cd src/stages
+python 3_1_train_pca_rf.py
 ```
 
 ### 8. (Optional) Test the model
@@ -136,15 +136,15 @@ To evaluate the model's performance:
 Part 1: Skin diseases Classification
 ```bash
 cd src/mpox
-python src/mpox/train.py
+python train.py
 ``` 
 
 Part 2: Stages Classification
 
 Add image data to the file located at ./src/stages/test_data and run the following command:
 ```bash
-cd src/severity
-python src/mpox/3_2_test_pca_rf.py
+cd src/stages
+python 3_2_test_pca_rf.py
 ```
 
 ### Requirements
@@ -159,6 +159,7 @@ All requirements will be installed requirements.txt
   - Pandas
   - scikit-learn
   - Jobliv
+  - keras-turner
 
 <a name="repro"></a>
 
