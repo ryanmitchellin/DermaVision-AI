@@ -13,7 +13,7 @@ DATA_DIR = './src/stages/augmented_data'
 CATEGORIES = ['macule', 'papule', 'pustule', 'scab', 'vesicles']
 IMG_SIZE = 64
 NUM_CLASSES = len(CATEGORIES)
-EPOCHS = 5
+EPOCHS = 20
 
 # Load all images and labels from the dataset
 def load_all_images():
@@ -102,6 +102,12 @@ def main():
         if val_accuracy > best_accuracy:
             best_accuracy = val_accuracy
             best_model = model
+
+    # Print training history
+    print(history.history['loss'])
+    print(history.history['val_loss'])
+    print(history.history['accuracy'])
+    print(history.history['val_accuracy']) 
 
     # Calculate and display cross-validation results
     print('\nCross-validation results:')

@@ -167,8 +167,10 @@ src/stages/kaggleClassified/
 src/stages/ClassifiedResized/
 src/stages/augmented_data/
 src/stages/augmented_autoencoder/
-src/stages/models/2_pca_model.pkl
-src/stages/models/3_pca_rf_stages.pkl
+src/stages/models/4_fourier_pca_model.pkl
+src/stages/models/5_fourier_pca_rf_stages.pkl
+# src/stages/models/2_pca_model.pkl
+# src/stages/models/3_pca_rf_stages.pkl
 
 # Ignore PCA and Fourier PCA Output .csv
 *.csv
