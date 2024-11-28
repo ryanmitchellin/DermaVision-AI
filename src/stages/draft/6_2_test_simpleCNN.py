@@ -4,7 +4,7 @@ import numpy as np
 import cv2
 import os
 
-# Constants
+# Constantsgit 
 IMAGE_SIZE = 64
 BATCH_SIZE = 16
 TEST_DIR = './src/stages/test_data'

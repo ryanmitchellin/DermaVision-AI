@@ -7,7 +7,7 @@ import pandas as pd
 import joblib
 
 # Load the PCA-reduced data
-csv_path = './src/stages/draft/fourier_pca_output.csv'
+csv_path = './fourier_pca_output.csv'
 df = pd.read_csv(csv_path)
 
 # Separate features and labels

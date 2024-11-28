@@ -48,12 +48,12 @@ def main():
         if val_accuracy > best_accuracy:
             best_accuracy = val_accuracy
             print(f"Saving best model for Fold {fold_index + 1} with Accuracy: {val_accuracy:.4f}")
-            joblib.dump(rf_model, "./src/stages/models/3_pca_rf_stages.pkl")
+            joblib.dump(rf_model, "./src/stages/models/3_1_pca_rf_stages.pkl")
     
     print("\nCross-Validation Results:")
     print(f"Mean Validation Accuracy: {np.mean(fold_scores):.4f}")
     print(f"Best Validation Accuracy: {best_accuracy:.4f}")
-    print(f"Best model saved as: {"./src/stages/models/3_pca_rf_stages.pkl"}")
+    print(f"Best model saved as: {"./src/stages/models/3_1_pca_rf_stages.pkl"}")
 
 if __name__ == '__main__':
     main()
