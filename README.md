@@ -97,12 +97,12 @@ pip install -r requirements.txt
 
 ### 4. Augment data
 ```bash
-cd src/severity
+cd src/stages
 python 1_keras_augmentation.py
 ```
 ### 5. Extract features from data using Principal Component Analysis (PCA).
 ```bash
-cd src/severity
+cd src/stages
 python 2_pca.py
 ```
 ### 6. Train the first model
@@ -125,7 +125,7 @@ If you decide to download the data, remember to unzip the file and relocate the 
 
 ### 7. Train the second model
 ```bash
-cd src/severity
+cd src/stages
 python src/mpox/3_1_train_pca_rf.py
 ```
 
@@ -143,7 +143,7 @@ Part 2: Stages Classification
 
 Add image data to the file located at ./src/stages/test_data and run the following command:
 ```bash
-cd src/severity
+cd src/stages
 python src/mpox/3_2_test_pca_rf.py
 ```
 
@@ -159,6 +159,7 @@ All requirements will be installed requirements.txt
   - Pandas
   - scikit-learn
   - Jobliv
+  - keras-turner
 
 <a name="repro"></a>
 
