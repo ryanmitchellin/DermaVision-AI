@@ -11,7 +11,7 @@ from sklearn.model_selection import StratifiedKFold
 # Constants
 DATA_DIR = './src/stages/augmented_data'
 CATEGORIES = ['macule', 'papule', 'pustule', 'scab', 'vesicles']
-IMG_SIZE = 244
+IMG_SIZE = 64
 NUM_CLASSES = len(CATEGORIES)
 EPOCHS = 5
 
