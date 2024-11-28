@@ -35,14 +35,15 @@ function discardImage() {
 	const fileName = document.getElementById("fileName");
 	const resultContainer = document.getElementById("result-container");
 
+	// Reset file input and preview
 	fileInput.value = "";
 	filePreview.classList.add("hidden");
 	diagnoseButton.disabled = true;
 	diagnoseButton.classList.add("disabled-btn");
 	fileName.textContent = "No file chosen";
 
-	// Hide results container
-	resultContainer.classList.add("hidden");
+	// Hide results container completely
+	resultContainer.style.display = "none";
 }
 
 // Upload image and handle the prediction process
@@ -62,7 +63,7 @@ async function uploadImage() {
 	const resultContainer = document.getElementById("result-container");
 
 	loadingSpinner.classList.remove("hidden");
-	resultContainer.classList.add("hidden"); // Hide result container while loading
+	resultContainer.style.display = "none"; // Hide result container while loading
 
 	// Simulate minimum spinner duration
 	const spinnerStartTime = Date.now();
@@ -97,12 +98,13 @@ function displayResults(result) {
 	const resultElement = document.getElementById("result");
 	const stageElement = document.getElementById("stage");
 
-	// Clear previous results
+	// Reset results
 	resultElement.innerHTML = "";
 	stageElement.innerHTML = "";
 
 	// Display diagnosis
 	resultElement.textContent = `Diagnosis: ${result.prediction}`;
+	resultContainer.style.display = "block"; // Show the container
 
 	// Add "Learn more" link dynamically if the prediction is Monkeypox
 	if (result.prediction.toLowerCase() === "monkeypox") {
@@ -113,11 +115,11 @@ function displayResults(result) {
 		resultElement.appendChild(diagnosisLink);
 	}
 
-	// Display stage for Monkeypox cases
-	if (result.stage) {
+	// Display stage only for Monkeypox cases
+	if (result.prediction.toLowerCase() === "monkeypox" && result.stage) {
 		stageElement.textContent = `Stage: ${result.stage}`;
+		stageElement.classList.remove("hidden");
+	} else {
+		stageElement.classList.add("hidden"); // Hide stage for non-Monkeypox cases
 	}
-
-	// Show the results container
-	resultContainer.classList.remove("hidden");
 }
