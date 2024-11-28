@@ -32,9 +32,8 @@ Main Features:
   
 ### What to find where
 
-Explain briefly what files are found where
+File Structure: 
 
-# TO DO: Modify this 
 ```bash
 repository
 ├── static/                          # Frontend assets
