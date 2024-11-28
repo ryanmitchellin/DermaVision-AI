@@ -108,7 +108,7 @@ python 2_pca.py
 ### 6. Train the first model
 ```bash
 cd src/mpox
-python src/mpox/train.py
+python train.py
 ```
 
 #### key features:
@@ -126,7 +126,7 @@ If you decide to download the data, remember to unzip the file and relocate the 
 ### 7. Train the second model
 ```bash
 cd src/stages
-python src/mpox/3_1_train_pca_rf.py
+python 3_1_train_pca_rf.py
 ```
 
 ### 8. (Optional) Test the model
@@ -136,7 +136,7 @@ To evaluate the model's performance:
 Part 1: Skin diseases Classification
 ```bash
 cd src/mpox
-python src/mpox/train.py
+python train.py
 ``` 
 
 Part 2: Stages Classification
@@ -144,7 +144,7 @@ Part 2: Stages Classification
 Add image data to the file located at ./src/stages/test_data and run the following command:
 ```bash
 cd src/stages
-python src/mpox/3_2_test_pca_rf.py
+python 3_2_test_pca_rf.py
 ```
 
 ### Requirements
