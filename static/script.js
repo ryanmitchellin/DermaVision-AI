@@ -46,6 +46,22 @@ function discardImage() {
 	resultContainer.style.display = "none";
 }
 
+// Zoom image modal functionality
+function zoomImage() {
+	const filePreview = document.getElementById("filePreview");
+	const zoomedImage = document.getElementById("zoomedImage");
+	const zoomModal = document.getElementById("zoomModal");
+
+	zoomedImage.src = filePreview.src;
+	zoomModal.classList.remove("hidden");
+
+	window.onclick = function (event) {
+		if (event.target === zoomModal) {
+			zoomModal.classList.add("hidden");
+		}
+	};
+}
+
 // Upload image and handle the prediction process
 async function uploadImage() {
 	const fileInput = document.getElementById("fileInput");
@@ -81,10 +97,13 @@ async function uploadImage() {
 		const minimumSpinnerTime = 1000;
 		const remainingTime = minimumSpinnerTime - elapsedTime;
 
-		setTimeout(() => {
-			displayResults(result);
-			loadingSpinner.classList.add("hidden");
-		}, remainingTime > 0 ? remainingTime : 0);
+		setTimeout(
+			() => {
+				displayResults(result);
+				loadingSpinner.classList.add("hidden");
+			},
+			remainingTime > 0 ? remainingTime : 0
+		);
 	} catch (error) {
 		console.error("Error:", error);
 		alert("An error occurred while processing the image. Please try again.");
