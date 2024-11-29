@@ -189,7 +189,7 @@ python ./src/mpox/app.py
 
 2. The application will be available at: http://127.0.0.1:5000
 3. Open the application
-4. Upload an image file representing any skin disease. (Optional: Sample skin disease can be obtain from './src/mpox/resources/')
+4. Upload an image file representing any skin disease. (Optional: Sample skin disease can be obtained from './src/mpox/resources/')
 5. Results will be displayed on the website's main page.
 
 Note: This application assumes all input is a valid image of skin disease.
@@ -198,8 +198,9 @@ Note: This application assumes all input is a valid image of skin disease.
 
 ## 4 Reference
 
-Nafin, M., Monkeypox Skin Lesion Dataset, Kaggle. Available at:
-https://www.kaggle.com/datasets/nafin59/monkeypox-skin-lesion-dataset/data.
+Paul, J., Mpox Skin Lesion Dataset Version 2.0 (MSLD v2.0), Kaggle. Available
+at: https://www.kaggle.com/datasets/joydippaul/mpox-skin-lesion-dataset-version-
+20-msld-v20.
 
 <a name="Troubleshooting"></a>
 
