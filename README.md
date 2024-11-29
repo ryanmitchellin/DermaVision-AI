@@ -89,7 +89,7 @@ pip install -r requirements.txt
 
 ### 3. Download the dataset
 
-- Go to the source https://www.kaggle.com/datasets/joydippaul/mpox-skin-lesion-dataset-version-20-msld-v20 (Nafin, n.d.).
+- Go to the source https://www.kaggle.com/datasets/joydippaul/mpox-skin-lesion-dataset-version-20-msld-v20 (Paul, J.).
 - Download the dataset by executing the provided code in a new standalone .py file. (Note: Make sure you don't download the dataset as zip as it messes up the pathway of the inner files).
 
 You can do this by creating a separate python file (in this case: import.py), paste the code, and run the following command in the parent folder of the cloned file:
@@ -98,7 +98,7 @@ python ./import.py
 ```
 - The folder's path will be displayed in the terminal. Look for the folder named 'mpox-skin-lesion-dataset-version-20-msld-v20/versions/4' and relocate it to './src/mpox/.'
 - Ensure that the file path './src/mpox/mpox-skin-lesion-dataset-version-20-msld-v20/versions/4' exists.
-- Download the classified dataset. Original data is retrieved from the same dataset as above (Nafin, n.d.). https://drive.google.com/file/d/1nbV4X2f4PvFahuJbwLZc9pmFaODSSN7j/view?usp=sharing
+- Download the classified dataset. Original data is retrieved from the same dataset as above (Paul, J.). https://drive.google.com/file/d/1nbV4X2f4PvFahuJbwLZc9pmFaODSSN7j/view?usp=sharing
 - Extract and relocate the file to './src/stages/'
 - Ensure that the file path './src/stages/classifiedData' exists.
 
