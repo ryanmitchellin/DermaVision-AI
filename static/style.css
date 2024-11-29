@@ -470,3 +470,33 @@ button.disabled-btn {
 .learn-more-link:hover {
 	color: darkorange;
 }
+
+/* Image Styling */
+.image-container-stages {
+	width: 100%;
+}
+
+.disease-images {
+	margin: 2rem auto; /* Changed from 2rem 0 to auto for horizontal centering */
+	text-align: center;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center; /* Centers child elements horizontally */
+}
+
+.stages-image {
+	max-width: 1000px;
+	height: auto;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	transition: transform 0.3s ease;
+	display: block;
+	margin: 0 auto;
+}
+
+.image-caption {
+	margin-top: 1rem;
+	color: #666;
+	font-style: italic;
+}
