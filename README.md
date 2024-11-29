@@ -92,7 +92,16 @@ pip install -r requirements.txt
 - Go to the source https://www.kaggle.com/datasets/joydippaul/mpox-skin-lesion-dataset-version-20-msld-v20 (Paul, J.).
 - Download the dataset by executing the provided code in a new standalone .py file. (Note: Make sure you don't download the dataset as zip as it messes up the pathway of the inner files).
 
-You can do this by creating a separate python file (in this case: import.py), paste the code, and run the following command in the parent folder of the cloned file:
+```bash
+import kagglehub
+
+# Download latest version
+path = kagglehub.dataset_download("joydippaul/mpox-skin-lesion-dataset-version-20-msld-v20")
+
+print("Path to dataset files:", path)
+```
+
+Alternatively, you can copy above and creates a separate python file (in this case: import.py), paste the code, and run the following command in the parent folder of the cloned file:
 
 ```bash
 python ./import.py
