@@ -199,8 +199,7 @@ Note: This application assumes all input is a valid image of skin disease.
 ## 4 Reference
 
 Paul, J., Mpox Skin Lesion Dataset Version 2.0 (MSLD v2.0), Kaggle. Available
-at: https://www.kaggle.com/datasets/joydippaul/mpox-skin-lesion-dataset-version-
-20-msld-v20.
+at: https://www.kaggle.com/datasets/joydippaul/mpox-skin-lesion-dataset-version-20-msld-v20.
 
 <a name="Troubleshooting"></a>
 
