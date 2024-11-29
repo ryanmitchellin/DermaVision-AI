@@ -70,6 +70,8 @@ repository
 
 ## 2 Installation
 
+Note: Make sure you have python and pip installed.
+
 ### 1. Clone the repository
 
 ```bash
