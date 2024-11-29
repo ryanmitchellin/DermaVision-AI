@@ -74,7 +74,6 @@ repository
 
 ```bash
 git clone git@github.com:sfu-cmpt340/2024_3_project_08.git
-2024_3_project_08
 ```
 
 ### 2. Set Up environment
@@ -82,14 +81,20 @@ git clone git@github.com:sfu-cmpt340/2024_3_project_08.git
 Install the required Python dependencies:
 
 ```bash
+cd 2024_3_project_08
 pip install -r requirements.txt
 ```
 
 ### 3. Download the dataset
 
-- Go to the source https://www.kaggle.com/datasets/nafin59/monkeypox-skin-lesion-dataset/data (Nafin, n.d.).
-- Download the dataset by executing the provided code in a standalone .py file (Note: Make sure you don't download the dataset as zip as it messes up the pathway of the inner files).
-- The folder's path will be displayed in the terminal. Relocate it to './src/mpox/.'
+- Go to the source https://www.kaggle.com/datasets/joydippaul/mpox-skin-lesion-dataset-version-20-msld-v20 (Nafin, n.d.).
+- Download the dataset by executing the provided code in a new standalone .py file. (Note: Make sure you don't download the dataset as zip as it messes up the pathway of the inner files).
+
+You can do this by creating a separate python file (in this case: import.py), paste the code, and run the following command in the parent folder of the cloned file:
+```bash
+cd import.py
+```
+- The folder's path will be displayed in the terminal. Look for the folder named 'mpox-skin-lesion-dataset-version-20-msld-v20/versions/4' and relocate it to './src/mpox/.'
 - Ensure that the file path './src/mpox/mpox-skin-lesion-dataset-version-20-msld-v20/versions/4' exists.
 - Download the classified dataset. Original data is retrieved from the same dataset as above (Nafin, n.d.). https://drive.google.com/file/d/1nbV4X2f4PvFahuJbwLZc9pmFaODSSN7j/view?usp=sharing
 - Extract and relocate the file to './src/stages/'
@@ -98,8 +103,7 @@ pip install -r requirements.txt
 ### 4. Augment data
 
 ```bash
-cd src/stages
-python 1_keras_augmentation.py
+python ./src/stages1_keras_augmentation.py
 ```
 
 ### 5. Extract features from data using Principal Component Analysis (PCA).
