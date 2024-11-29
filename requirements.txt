@@ -7,4 +7,5 @@ tensorflow
 flask
 keras-tuner
 pillow
-kaggleHUb
+kagglehub
+keras==3.6.0

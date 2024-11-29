@@ -53,7 +53,8 @@ def main():
     print("\nCross-Validation Results:")
     print(f"Mean Validation Accuracy: {np.mean(fold_scores):.4f}")
     print(f"Best Validation Accuracy: {best_accuracy:.4f}")
-    print(f"Best model saved as: {"./src/stages/models/3_pca_rf_stages.pkl"}")
+    print(f"Best model saved as: {'./src/stages/models/3_pca_rf_stages.pkl'}")
+
 
 if __name__ == '__main__':
     main()

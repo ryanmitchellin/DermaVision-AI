@@ -163,7 +163,7 @@ cython_debug/
 src/mpox/4
  
 # Ignore severity dataset
-src/stages/kaggleClassified/
+src/stages/classifiedData/
 src/stages/ClassifiedResized/
 src/stages/augmented_data/
 src/stages/augmented_autoencoder/

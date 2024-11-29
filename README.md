@@ -89,37 +89,35 @@ pip install -r requirements.txt
 
 ### 3. Download the dataset
 
-- Go to the source https://www.kaggle.com/datasets/joydippaul/mpox-skin-lesion-dataset-version-20-msld-v20 (Nafin, n.d.).
+- Go to the source https://www.kaggle.com/datasets/joydippaul/mpox-skin-lesion-dataset-version-20-msld-v20 (Paul, J.).
 - Download the dataset by executing the provided code in a new standalone .py file. (Note: Make sure you don't download the dataset as zip as it messes up the pathway of the inner files).
 
 You can do this by creating a separate python file (in this case: import.py), paste the code, and run the following command in the parent folder of the cloned file:
 ```bash
-cd import.py
+python ./import.py
 ```
 - The folder's path will be displayed in the terminal. Look for the folder named 'mpox-skin-lesion-dataset-version-20-msld-v20/versions/4' and relocate it to './src/mpox/.'
 - Ensure that the file path './src/mpox/mpox-skin-lesion-dataset-version-20-msld-v20/versions/4' exists.
-- Download the classified dataset. Original data is retrieved from the same dataset as above (Nafin, n.d.). https://drive.google.com/file/d/1nbV4X2f4PvFahuJbwLZc9pmFaODSSN7j/view?usp=sharing
+- Download the classified dataset. Original data is retrieved from the same dataset as above (Paul, J.). https://drive.google.com/file/d/1nbV4X2f4PvFahuJbwLZc9pmFaODSSN7j/view?usp=sharing
 - Extract and relocate the file to './src/stages/'
 - Ensure that the file path './src/stages/classifiedData' exists.
 
 ### 4. Augment data
 
 ```bash
-python ./src/stages1_keras_augmentation.py
+python ./src/stages/1_keras_augmentation.py
 ```
 
 ### 5. Extract features from data using Principal Component Analysis (PCA).
 
 ```bash
-cd src/stages
-python 2_pca.py
+python ./src/stages/2_pca.py
 ```
 
 ### 6. Train the first model
 
 ```bash
-cd src/mpox
-python train.py
+python ./src/mpox/train.py
 ```
 
 #### key features:
@@ -136,8 +134,7 @@ If you decide to download the data, remember to unzip the file and relocate the 
 ### 7. Train the second model
 
 ```bash
-cd src/stages
-python 3_1_train_pca_rf.py
+python ./src/stages/3_1_train_pca_rf.py
 ```
 
 ### 8. (Optional) Test the model
@@ -147,8 +144,7 @@ To evaluate the model's performance:
 Part 1: Skin diseases Classification
 
 ```bash
-cd src/mpox
-python test.py
+python ./src/mpox/test.py
 ```
 
 Part 2: Stages Classification
@@ -156,8 +152,7 @@ Part 2: Stages Classification
 Add image data to the file located at ./src/stages/test_data and run the following command:
 
 ```bash
-cd src/stages
-python 3_2_test_pca_rf.py
+python ./src/stages/3_2_test_pca_rf.py
 ```
 
 ### Requirements
@@ -177,6 +172,7 @@ All requirements will be installed requirements.txt
   - keras-turner
   - kagglehub
   - Pillow
+  - keras==3.6.0
 
 <a name="repro"></a>
 
@@ -185,8 +181,7 @@ All requirements will be installed requirements.txt
 1. Go to the root of the project file, then execute the command below:
 
 ```bash
-cd src/mpox
-python app.py
+python ./src/mpox/app.py
 
 ```
 
@@ -220,4 +215,5 @@ If you encounter module import errors, you'll need to install the missing packag
 - `ModuleNotFoundError: No module named 'sklearn'` → Run `pip install scikit-learn`
 - `ModuleNotFoundError: No module named 'keras_tuner'` → Run `pip install keras-tuner`
 - `ModuleNotFoundError: No module named 'flask'` → Run `pip install flask`
+- `ModuleNotFoundError: No module named 'keras'` → Run `pip install keras`
 ```
