@@ -93,9 +93,11 @@ pip install -r requirements.txt
 - Download the dataset by executing the provided code in a new standalone .py file. (Note: Make sure you don't download the dataset as zip as it messes up the pathway of the inner files).
 
 You can do this by creating a separate python file (in this case: import.py), paste the code, and run the following command in the parent folder of the cloned file:
+
 ```bash
 python ./import.py
 ```
+
 - The folder's path will be displayed in the terminal. Look for the folder named 'mpox-skin-lesion-dataset-version-20-msld-v20/versions/4' and relocate it to './src/mpox/.'
 - Ensure that the file path './src/mpox/mpox-skin-lesion-dataset-version-20-msld-v20/versions/4' exists.
 - Download the classified dataset. Original data is retrieved from the same dataset as above (Paul, J.). https://drive.google.com/file/d/1nbV4X2f4PvFahuJbwLZc9pmFaODSSN7j/view?usp=sharing
@@ -187,7 +189,7 @@ python ./src/mpox/app.py
 
 2. The application will be available at: http://127.0.0.1:5000
 3. Open the application
-4. Upload an image file representing any skin disease.
+4. Upload an image file representing any skin disease. (Optional: Sample skin disease can be obtain from './src/mpox/resources/')
 5. Results will be displayed on the website's main page.
 
 Note: This application assumes all input is a valid image of skin disease.
