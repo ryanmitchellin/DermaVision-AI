@@ -2,14 +2,6 @@
 
 This project is designed as a tool to assist users in identifying skin diseases by analyzing uploaded images. Upon submitting a picture, the system provides feedback on the diagnosed condition and, in cases where the disease is classified as mpox, also evaluate its stages level.
 
-## Important Links
-
-| [Timesheet](https://1sfu-my.sharepoint.com/:x:/g/personal/hamarneh_sfu_ca/Ea_oAN9CB_hBi3OZi4DQiaIBHtT-s4eWAng1HMl6Hh85kA?e=C4xfla) | [Slack channel](https://app.slack.com/client/T07K7SWL5A4/C07JS14AD43) | [Project report](https://www.overleaf.com/project/66d0b0532317a8cadc2e64f1) |
-
-## Video/demo/GIF
-
-Record a short video (1:40 - 2 minutes maximum) or gif or a simple screen recording or even using PowerPoint with audio or with text, showcasing your work.
-
 ## Table of Contents
 
 1. [Demo](#demo)
@@ -75,7 +67,7 @@ Note: Make sure you have python and pip installed.
 ### 1. Clone the repository
 
 ```bash
-git clone git@github.com:sfu-cmpt340/2024_3_project_08.git
+git clone git@github.com:ryanmitchellin/DermaVision-AI.git
 ```
 
 ### 2. Set Up environment
